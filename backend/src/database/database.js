@@ -1,13 +1,9 @@
-import mysql from 'mysql2';
+import Sequelize from 'sequelize';
+import { DATABASE_NAME, DATABASE_PASSWORD, HOST, DIALECT, DATABASE_ACCOUNT } from '../config/config.js';
 
-const con = mysql.createConnection({
-    host: 'localhost',
-    user: 'myusername',
-    password: 'mypassword',
+const sequelize = new Sequelize(DATABASE_NAME, DATABASE_ACCOUNT, DATABASE_PASSWORD, {
+    host: HOST,
+    dialect: DIALECT,
 });
 
-con.connect(function(err) {
-    if (err) throw err;
-    console.log('Connected!');
-});
-export default con;
+export default sequelize;
