@@ -1,6 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
 
-import sequelize from "../database/database";
+import sequelize from "../database/database.js";
 
 /** * User model representing a user in the system.
  * This model includes fields for username, email,  password, and timestamps.
@@ -65,8 +65,4 @@ User.init(
   }
 );
 
-// Sync the model with the database
-// Use 'alter: true' to update the table structure without dropping it
-User.sync({ alter: true }) // Use 'force: true' only in development to drop and recreate the table
-  .then(() => console.log('User table created or updated successfully'));
 export default User;
