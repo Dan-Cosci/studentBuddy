@@ -24,6 +24,7 @@ app.listen(PORT, async () => {
     console.log('\x1b[32mDatabase connected and sync successful.\x1b[0m');
   } catch (error) {
     console.error('\x1b[31mUnable to connect to the database:\x1b[0m', error);
+    process.exit(1); // Exit the process if database connection fails
   }
 });
 
