@@ -8,5 +8,6 @@ config({path:'./.env.development.local'});
 export const {
   PORT, SERVER_URL,
   DATABASE_PASSWORD, DATABASE_NAME,
-  HOST, DIALECT, DATABASE_ACCOUNT
+  HOST, DIALECT, DATABASE_ACCOUNT,
+  JWT_SECRET, JWT_EXPIRES_IN
 } = process.env;
