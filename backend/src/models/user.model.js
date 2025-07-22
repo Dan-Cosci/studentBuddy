@@ -41,6 +41,7 @@ User.init(
         isEmail: true,
         notEmpty: true,
         len: [5, 100],
+        is: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i,
       },
       // Add a setter if you want lowercase + trimmed
       set(value) {

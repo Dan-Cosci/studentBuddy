@@ -1,7 +1,8 @@
 import { Router } from "express";
 
 const userRoutes = Router();
-// todo: Define user routes here
 
+userRoutes.get('/', GetUsers);
+userRoutes.get('/:id', GetUserDetails);
 
 export default userRoutes;

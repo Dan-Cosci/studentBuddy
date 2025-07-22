@@ -44,7 +44,8 @@ const authorize = async (req, res, next) => {
       });
     }
 
-    req.user = user; // Attach user to request object
+    // Attach user to the request object for further use in the route handlers
+    req.userId = user.id; // Attach user ID to request object
     next();
 
   } catch (error) {
