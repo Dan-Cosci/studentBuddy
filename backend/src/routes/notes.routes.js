@@ -1,8 +1,18 @@
 import { Router } from "express";
+import { 
+  AddNote, 
+  GetAllNotes, 
+  GetAllUserNotes, 
+  GetNoteDetails 
+} from "../controllers/notes.contoller.js";
 
 
 const notesRouter = Router();
-//todo: Implement the routes for notes
+
+notesRouter.get("/", GetAllNotes);
+notesRouter.get("/:userId", GetAllUserNotes);
+notesRouter.post("/:userId", AddNote);
+notesRouter.get("/:userid/:noteId", GetNoteDetails)
 
 
 export default notesRouter;

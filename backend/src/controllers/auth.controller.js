@@ -7,6 +7,8 @@ import User from "../models/user.model.js";
 
 export const Login = async (req, res, next) => {
   try {
+
+    // gets and check for password and email
     const { email, password } = req.body;
     if (!email || !password) {
       return res.status(400).json({
@@ -15,6 +17,7 @@ export const Login = async (req, res, next) => {
       });
     }
 
+    // finds user that has the email
     const user = await User.findOne({where: { email } });
     if (!user) {
       return res.status(404).json({
@@ -23,6 +26,7 @@ export const Login = async (req, res, next) => {
       });
     }
 
+    // checks if password is correct
     const isPasswordValid = bcrypt.compareSync(password, user.password);
     if (!isPasswordValid) {
       return res.status(401).json({
@@ -31,6 +35,7 @@ export const Login = async (req, res, next) => {
       });
     }
 
+    // returns a jwt token to be used to access in the database
     const token = jwt.sign({userId:user.id}, JWT_SECRET, {expiresIn:JWT_EXPIRES_IN});
     res.status(200).json({
       success: true,
@@ -81,6 +86,7 @@ export const Register = async (req, res, next) => {
       password:hashedPassword
     },{transaction: t});
 
+    // returns userid and jwt token
     const token = jwt.sign({userId: newUser.id},JWT_SECRET, {expiresIn: JWT_EXPIRES_IN});
     await t.commit();
 
