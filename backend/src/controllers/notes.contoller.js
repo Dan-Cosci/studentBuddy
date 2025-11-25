@@ -33,7 +33,35 @@ export const GetAllUserNotes = async (req, res, next) => {
   }
 };
 
-export const GetNoteDetails = async (req, res, next) => {};
+export const GetNoteDetails = async (req, res, next) => {
+  
+  try {
+  const { userId, noteId }= req.params;
+  const note = await Note.findByPk(noteId);
+  if (!note) {
+    return res.status(404).json({
+      success: false,
+      message: "Note Not Found"
+    });
+  }
+
+  if (parseInt(userId) != note.userId){
+    return res.status(401).json({
+      success:false,
+      message:"Unauthorized access, note from different user"
+    })
+  }
+
+  res.status(200).json({
+    success:true,
+    message:"Note details loaded",
+    data: note
+  });  
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const AddNote = async (req, res, next) => {
   const t = await sequelize.transaction();
   try {
