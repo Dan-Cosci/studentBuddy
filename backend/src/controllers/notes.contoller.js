@@ -75,21 +75,63 @@ export const AddNote = async (req, res, next) => {
         message: "content and title fields are required"
       });
     }
-
+    
     const newNote = await Note.create({
       title,content,userId
-      },{transaction: t}
-    );
+    },{transaction: t}
+  );
+  
+  await t.commit();
+  
+  res.status(200).json({
+    success:true,
+    message:`Added a new note to UserId: ${ userId }`,
+    data: newNote 
+  });
+} catch (error) {
+  t.rollback();
+  next(error);
+}
+};
+
+export const updateNote = async (req, res, next) =>{
+  const t = await sequelize.transaction();
+  try {
+    const { noteId } = req.params;
+    const { title, content } = req.body;
+    if (!title || !content){
+      return res.status(400).json({
+        success: false,
+        message: "content and title fields are required"
+      });
+    }
+
+    await Note.update({
+      content: content,
+      title: title,
+      updated_at: Date.now()
+    },{
+      where:{
+        id: noteId
+      }
+    });
 
     await t.commit();
 
+    const note = await Note.findByPk(noteId)
     res.status(200).json({
       success:true,
-      message:`Added a new note to UserId: ${ userId }`,
-      data: newNote 
+      message:`Updated a note id: ${ noteId }`,
+      data: note 
     });
+
   } catch (error) {
-    t.rollback();
+    await t.rollback()
     next(error);
   }
+
 };
+
+export const deleteNote = async (req, res, next) => {};
+export const summarizeNote = async (req, res, next) => {};
+export const summarizeNotes = async (req, res, next) => {};

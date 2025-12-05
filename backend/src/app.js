@@ -24,7 +24,6 @@ app.use(morgan("dev"))
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/notes', noteRoutes);
 app.use('/api/v1/users', userRoutes);
-app.use('/api/v1/ai')
 
 // welcome route
 app.get('/', (req, res) => {
