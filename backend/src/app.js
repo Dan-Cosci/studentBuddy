@@ -2,15 +2,21 @@ import express from 'express';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 
+// database
 import { PORT } from './config/config.js';
 import sequelize from './database/database.js';
 import './models/user.model.js'; // Import User model to ensure it's registered
 import './models/note.model.js'; // Import Note model to ensure it's registered
 
+// routes
 import authRoutes from './routes/auth.routes.js';
 import noteRoutes from './routes/notes.routes.js';
 import userRoutes from './routes/users.routes.js';
 
+// middlewares
+import { arcjetMiddleware } from './middleware/arcjet.middleware.js';
+
+// main app
 const app = express();
 
 // middleware
@@ -19,6 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public')); // Serve static files from 'public' directory
 app.use(cookieParser());
 app.use(morgan("dev"))
+app.use(arcjetMiddleware)
 
 //routes
 app.use('/api/v1/auth', authRoutes);

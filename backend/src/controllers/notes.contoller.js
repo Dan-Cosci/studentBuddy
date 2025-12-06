@@ -1,9 +1,10 @@
 import sequelize from "../database/database.js";
 import Note from "../models/note.model.js"
+import ai from "../services/gemini.service.js"
 
 export const GetAllNotes = async (req, res, next) => {
   try {
-    const notes = await Note.findAll();
+    const notes = await Note.findAll({ paranoid: false });
     res.status(200).json({
       success: true,
       message: "Notes loaded successfully",
@@ -94,44 +95,90 @@ export const AddNote = async (req, res, next) => {
 }
 };
 
-export const updateNote = async (req, res, next) =>{
+export const updateNote = async (req, res, next) => {
   const t = await sequelize.transaction();
+
   try {
     const { noteId } = req.params;
     const { title, content } = req.body;
-    if (!title || !content){
+
+    if (!title || !content) {
       return res.status(400).json({
         success: false,
-        message: "content and title fields are required"
+        message: "Title and content fields are required."
       });
     }
 
-    await Note.update({
-      content: content,
-      title: title,
-      updated_at: Date.now()
-    },{
-      where:{
-        id: noteId
-      }
-    });
+    const note = await Note.findByPk(noteId);
+    if (!note) {
+      return res.status(404).json({
+        success: false,
+        message: "Note not found."
+      });
+    }
+    if (note.deleted_at) {
+      return res.status(400).json({
+        success: false,
+        message: "Note deleted"
+      });
+    }
+
+    await note.update(
+      { title, content },
+      { transaction: t }
+    );
 
     await t.commit();
 
-    const note = await Note.findByPk(noteId)
     res.status(200).json({
-      success:true,
-      message:`Updated a note id: ${ noteId }`,
-      data: note 
+      success: true,
+      message: `Updated note with ID: ${noteId}`,
+      data: note    
     });
 
   } catch (error) {
-    await t.rollback()
+    await t.rollback();
     next(error);
   }
-
 };
 
-export const deleteNote = async (req, res, next) => {};
-export const summarizeNote = async (req, res, next) => {};
-export const summarizeNotes = async (req, res, next) => {};
+export const deleteNote = async (req, res, next) => {
+  try {
+    const { noteId } = req.params;
+
+    const note = await Note.findByPk(noteId);
+    if (!note) {
+      return res.status(404).json({
+        success: false,
+        message: "Note not found."
+      });
+    }
+    if (note.deleted_at) {
+      return res.status(400).json({
+        success: false,
+        message: "Note already deleted"
+      });
+    }
+
+    note.destroy();
+    res.status(200).json({
+      success: true,
+      message: "Note deleted",
+      data: note
+    });
+
+  } catch (error) {
+    next(error)
+  }
+};
+
+export const summarizeNote = async (req, res, next) => {
+  const greet = await ai("introduce yourself");
+  console.log(greet);
+  res.status(200).json({
+    success:true,
+    message: "to be properly implimented",
+    data: greet
+  });
+
+};

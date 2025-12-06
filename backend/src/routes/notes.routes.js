@@ -1,9 +1,11 @@
 import { Router } from "express";
 import { 
   AddNote, 
+  deleteNote, 
   GetAllNotes, 
   GetAllUserNotes, 
   GetNoteDetails, 
+  summarizeNote, 
   updateNote
 } from "../controllers/notes.contoller.js";
 
@@ -11,17 +13,13 @@ import {
 const notesRouter = Router();
 
 notesRouter.get("/", GetAllNotes);
+notesRouter.get("/ai", summarizeNote);
+
 notesRouter.get("/:userId", GetAllUserNotes);
 notesRouter.post("/:userId", AddNote);
 notesRouter.get("/:userId/:noteId", GetNoteDetails);
 notesRouter.put("/:noteId", updateNote);
-
-notesRouter.delete("/:noteId", (req,res)=>{ 
-  res.status(200).json({
-    success:true,
-    message:"Route not implimented"
-  });
-});
+notesRouter.delete("/:noteId", deleteNote);
 
 
 export default notesRouter;
