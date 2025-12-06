@@ -174,7 +174,6 @@ export const deleteNote = async (req, res, next) => {
 
 export const summarizeNote = async (req, res, next) => {
   const greet = await ai("introduce yourself");
-  console.log(greet);
   res.status(200).json({
     success:true,
     message: "to be properly implimented",

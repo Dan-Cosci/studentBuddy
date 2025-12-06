@@ -7,6 +7,7 @@ export const aj = arcjet({
   // variable rather than hard coding.
 
   key: ARCJET_KEY,
+  characteristics: ["ip.src", "user_agent", "tls.client.fingerprint"],
 
   rules: [
     // Shield protects your app from common attacks e.g. SQL injection
@@ -31,9 +32,9 @@ export const aj = arcjet({
       // Tracked by IP address by default, but this can be customized
       // See https://docs.arcjet.com/fingerprints
       //characteristics: ["ip.src"],
-      refillRate: 10, // Refill 5 tokens per interval
+      refillRate: 10, // Refill 10 tokens per interval
       interval: 10, // Refill every 10 seconds
-      capacity: 20, // Bucket capacity of 10 tokens
+      capacity: 20, // Bucket capacity of 20 tokens
 
     }),
   ],
