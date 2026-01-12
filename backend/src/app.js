@@ -1,6 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
 // database
 import { PORT } from './config/config.js';
@@ -18,6 +19,11 @@ import { arcjetMiddleware } from './middleware/arcjet.middleware.js';
 
 // main app
 const app = express();
+
+app.use(cors({
+  origin: 'http://localhost:5173', // Allow requests from your frontend
+  credentials: true, // Allow cookies to be sent
+}))
 
 // middleware
 app.use(express.json());
