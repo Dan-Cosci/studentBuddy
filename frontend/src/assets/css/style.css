@@ -118,4 +118,12 @@ pre {
   font-family: "Young Serif", serif;
 }
 
+.main {
+  min-height: 100vh;
+  width: 100%;
+  background-color: hsl(220, 15%, 12%);
+  display: flex;
+  flex-direction: column;
+}
+
 /*# sourceMappingURL=style.css.map */
