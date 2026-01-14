@@ -4,20 +4,23 @@ import "./assets/css/style.css"
 import toast from 'react-hot-toast'
 import instance from './services/api.service.js'
 
+import Navbar from './components/Navbar.jsx'
+import Footer from './components/Footer.jsx'
+import MainRouter from './routes/Main.routes.jsx'
+
+
 const App = () => {
 
-  const buttonClick = () => {
-    toast.success("Hello world")
-    instance.get('/notes/').then((res) => {
-      console.log(res)
-    })
-  }
+ 
   
   return (
-    <main className="main">
-      <h1 className=''>Hello world</h1>
-      <button onClick={buttonClick}>Click me</button>
-    </main>
+    <>
+      <Navbar />
+      <main className="main">
+        <MainRouter />
+      </main>
+      <Footer />
+    </>
   )
 }
 

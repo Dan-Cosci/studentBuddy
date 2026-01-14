@@ -1,7 +1,6 @@
-import dotenv from "dotenv";
 
 
 export const config = {
-  BASE_URL: process.env.BASE_URL,
-  API_VERSION: process.env.API_VERSION,
+  BASE_URL: import.meta.env.BASE_URL,
+  API_VERSION: import.meta.env.API_VERSION,
 };
