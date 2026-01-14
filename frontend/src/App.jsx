@@ -15,11 +15,9 @@ const App = () => {
   
   return (
     <>
-      <Navbar />
       <main className="main">
         <MainRouter />
       </main>
-      <Footer />
     </>
   )
 }
