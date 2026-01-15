@@ -15,10 +15,11 @@
 
     &__logo-ct{
         @include flex-row;
+        padding: 1rem 0;
         &__img{
             
             img{
-               width: clamp(2rem, 10vw, 5rem);
+               width: clamp(1rem, 10vw, 4rem);
             
             }
         }
@@ -26,19 +27,35 @@
         &__text{
             h1{
                 font-size: b.$fs-2xl;
-                margin-left: .4rem;
+                margin-left: .5rem;
             }
             span{
                 color: $clr-accent;
             }
         }
     }
-    
+        
+    &__link-ct{
+        background-color:$clr-main;
+        padding: 1rem 2rem;
+        border-radius: 50rem
+    }
 
-
-    // background-color: red;
     &__ul{
         @include flex-row;
         gap: 2rem;
+        font-size: b.$fs-md;
+        font-weight: 600;
+
+    }
+    
+    &__li{
+        transition: all .3s ease-in-out;
+        &:hover,
+        &:active{
+            cursor: pointer;
+            color: $clr-accent;
+        }
+        
     }
 }
