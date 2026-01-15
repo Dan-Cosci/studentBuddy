@@ -1,0 +1,44 @@
+@use "../abstract/" as *;
+@use "../base" as b;
+
+.landing-nav {
+    @include flex-center;
+    min-height: 7vh;
+    justify-content: space-between;
+    padding: 0 2rem;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+
+
+    &__logo-ct{
+        @include flex-row;
+        &__img{
+            
+            img{
+               width: clamp(2rem, 10vw, 5rem);
+            
+            }
+        }
+
+        &__text{
+            h1{
+                font-size: b.$fs-2xl;
+                margin-left: .4rem;
+            }
+            span{
+                color: $clr-accent;
+            }
+        }
+    }
+    
+
+
+    // background-color: red;
+    &__ul{
+        @include flex-row;
+        gap: 2rem;
+    }
+}

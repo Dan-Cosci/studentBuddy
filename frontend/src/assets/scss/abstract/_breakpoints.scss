@@ -1,0 +1,18 @@
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-lg: 1000px;
+$bp-xl: 1280px;
+
+@mixin for-size($range) {
+    @if $range == phone-only {
+        @media (max-width: $bp-sm) { @content; }
+    } @else if $range == tablet-portrait-up {
+        @media (min-width: $bp-sm) { @content; }
+    } @else if $range == tablet-landscape-up {
+        @media (min-width: $bp-md) { @content; }
+    } @else if $range == desktop-up {
+        @media (min-width: $bp-lg) { @content; }
+    } @else if $range == big-desktop-up {
+        @media (min-width: $bp-xl) { @content; }
+    }
+}
