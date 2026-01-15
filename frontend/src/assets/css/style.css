@@ -284,4 +284,12 @@ pre {
   color: hsl(4, 70%, 55%);
 }
 
+.login {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 /*# sourceMappingURL=style.css.map */

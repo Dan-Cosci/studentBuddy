@@ -1,0 +1,9 @@
+@use "../abstract/" as *;
+
+.login{
+    min-height: 100vh;
+    @include flex-colum;
+    justify-content: center;
+    align-items: center;
+
+}
