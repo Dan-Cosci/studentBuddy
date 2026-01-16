@@ -295,7 +295,7 @@ pre {
 }
 .login__bubble {
   background-color: hsl(220, 10%, 18%);
-  width: clamp(20rem, 50vw, 30rem);
+  width: clamp(20rem, 50vw, 35rem);
   border-radius: 5rem;
   padding: 2rem 3rem;
   display: flex;
@@ -352,11 +352,24 @@ pre {
 }
 .login__bubble__body form p {
   text-align: right;
+  font-size: clamp(1.05rem, 1rem + 0.6vw, 1.125rem);
 }
 .login__bubble__body form .ct {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+}
+.login__bubble__body form span {
+  cursor: pointer;
+  color: hsl(4, 70%, 55%);
+  transition: all 0.2s;
+}
+.login__bubble__body form span:hover, .login__bubble__body form span:focus {
+  color: hsl(4, 70%, 48%);
+}
+.login__bubble__body form span:active {
+  color: hsl(4, 70%, 55%);
 }
 
 /*# sourceMappingURL=style.css.map */

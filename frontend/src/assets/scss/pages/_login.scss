@@ -10,7 +10,7 @@
     &__bubble{
 
         background-color: $clr-main;
-        width: clamp(20rem, 50vw, 30rem);
+        width: clamp(20rem, 50vw, 35rem);
         border-radius: 5rem;
         padding: 2rem 3rem;
         @include flex-colum;
@@ -69,10 +69,25 @@
                 }
                 p{
                     text-align: right;
-
+                    font-size: b.$fs-md;
                 }
                 .ct{
                     @include flex-row;
+                    justify-content: space-between;
+                }
+                span {
+                    cursor: pointer;
+                    color: $clr-accent;
+                    transition:all 0.2s;
+                    
+                    &:hover,
+                    &:focus {
+                        color: $clr-accent-hover;
+
+                    }
+                    &:active {
+                        color: $clr-accent;
+                    }
                 }
     
             }
