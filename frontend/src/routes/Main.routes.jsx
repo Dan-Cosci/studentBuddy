@@ -11,7 +11,6 @@ function MainRouter() {
       <Routes >
         {LandingRoutes }
         {AppRoutes }
-        <Route path="*" element={<Page404 />} />
       </Routes >
     </>
   )

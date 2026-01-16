@@ -372,4 +372,144 @@ pre {
   color: hsl(4, 70%, 55%);
 }
 
+.register {
+  margin-top: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.register__bubble {
+  background-color: hsl(220, 10%, 18%);
+  width: clamp(20rem, 50vw, 35rem);
+  border-radius: 5rem;
+  padding: 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.register__bubble__header {
+  padding-bottom: 1.5rem;
+}
+.register__bubble__body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.register__bubble__body form {
+  width: 100%;
+}
+.register__bubble__body form label {
+  width: 100%;
+  font-size: clamp(1.15rem, 1.05rem + 0.8vw, 1.25rem);
+  margin: 0.5rem 0;
+  display: block;
+}
+.register__bubble__body form input {
+  width: 100%;
+  height: 3rem;
+  border-radius: 0.5rem;
+  border: none;
+  padding: 0.8rem;
+  font-size: clamp(1.15rem, 1.05rem + 0.8vw, 1.25rem);
+  margin: 0.5rem 0;
+}
+.register__bubble__body form button {
+  padding: 0.7rem 1.5rem;
+  background-color: hsl(4, 70%, 55%);
+  border: none;
+  border-radius: 0.5rem;
+  font-size: clamp(1.15rem, 1.05rem + 0.8vw, 1.25rem);
+  color: hsl(210, 20%, 96%);
+  font-weight: 500;
+  border-radius: 50rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin: 2rem 0;
+}
+.register__bubble__body form button:hover, .register__bubble__body form button:focus {
+  background-color: hsl(4, 70%, 48%);
+  outline: none;
+}
+.register__bubble__body form button:active {
+  background-color: hsl(4, 70%, 55%);
+}
+.register__bubble__body form p {
+  text-align: right;
+  font-size: clamp(1.05rem, 1rem + 0.6vw, 1.125rem);
+}
+.register__bubble__body form .ct {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.register__bubble__body form span {
+  cursor: pointer;
+  color: hsl(4, 70%, 55%);
+  transition: all 0.2s;
+}
+.register__bubble__body form span:hover, .register__bubble__body form span:focus {
+  color: hsl(4, 70%, 48%);
+}
+.register__bubble__body form span:active {
+  color: hsl(4, 70%, 55%);
+}
+
+.error-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 0;
+}
+.error-page__message {
+  font-size: clamp(1.35rem, 1.2rem + 1vw, 1.5rem);
+  margin-bottom: 1rem;
+}
+.error-page__hint {
+  font-size: clamp(1.05rem, 1rem + 0.6vw, 1.125rem);
+  margin-bottom: 1rem;
+  color: hsl(210, 10%, 70%);
+}
+.error-page__actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.error-page__actions__btn {
+  font-size: clamp(1.15rem, 1.05rem + 0.8vw, 1.25rem);
+  padding: 0.7rem 1.5rem;
+  background-color: hsl(4, 70%, 55%);
+  border: none;
+  border-radius: 0.5rem;
+  color: hsl(210, 20%, 96%);
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.error-page__actions__btn:hover, .error-page__actions__btn:focus {
+  background-color: hsl(4, 70%, 48%);
+  outline: none;
+}
+.error-page__actions__btn:active {
+  background-color: hsl(4, 70%, 55%);
+}
+.error-page__actions .scdry {
+  background-color: hsl(220, 10%, 18%);
+}
+.error-page__actions .scdry:hover, .error-page__actions .scdry:focus {
+  background-color: hsl(220, 10%, 30%);
+  outline: none;
+}
+.error-page__actions .scdry:active {
+  background-color: hsl(220, 10%, 18%);
+}
+
 /*# sourceMappingURL=style.css.map */

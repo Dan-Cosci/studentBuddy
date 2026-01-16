@@ -1,0 +1,61 @@
+@use "../abstract/" as *;
+@use "../base/" as b;
+
+.error-page{
+    min-height: 100vh;
+    @include flex-colum;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 0;
+
+    &__message{
+        font-size: b.$fs-xl;
+        margin-bottom: 1rem;
+    }
+
+    &__hint{
+        font-size: b.$fs-md;
+        margin-bottom: 1rem;
+        color: $clr-text-muted;
+    }
+
+    &__actions{
+        @include flex-row;
+        gap: 1rem;
+        margin-top: 1rem;
+
+        &__btn{
+            font-size: b.$fs-lg;
+            padding: .7rem 1.5rem;
+            background-color: $clr-accent;
+            border: none;
+            border-radius: 0.5rem;
+            color: $clr-text-primary;
+            font-weight: 500;
+            transition: all 0.2s;
+
+            &:hover,
+            &:focus {
+                background-color: $clr-accent-hover;
+                outline: none;
+            }
+            &:active {
+                background-color: $clr-accent;
+            }
+            
+        }
+        
+        .scdry{
+            background-color: $clr-main;
+            &:hover,
+            &:focus {
+                background-color: $clr-border;
+                outline: none;
+            }
+            &:active {
+                background-color: $clr-main;
+            }
+        }
+    }
+}
