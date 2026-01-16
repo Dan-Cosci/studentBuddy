@@ -1,8 +1,11 @@
+@use "../abstract/" as *;
+
 .footer {
-  background: hsl(220, 15%, 12%);
+  background: $clr-main;
   color: hsl(210, 20%, 96%);
   padding: 3rem 1.5rem 1.5rem;
   font-size: 0.9rem;
+  border-top: $clr-border 1px solid;
 }
 
 .footer__inner {

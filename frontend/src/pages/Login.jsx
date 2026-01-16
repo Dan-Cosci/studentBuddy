@@ -29,7 +29,7 @@ const Login = () => {
       <div className="login">
         <div className="login__bubble">
           <div className="login__bubble__header">
-            <h1>login</h1>
+            <h1>Login</h1>
           </div>
           <div className="login__bubble__body">
             <form onSubmit={handleSubmit}> 
@@ -49,8 +49,10 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required 
               />
-              <button type="submit">Login</button>
-              <p>Don't have an account? <span><Link to="/register">Register now!</Link></span></p>
+              <div className="ct">
+                <button type="submit">Login</button>
+                <p>Don't have an account? <span><Link to="/register">Register now!</Link></span></p>
+              </div>
             </form>
 
           </div>
