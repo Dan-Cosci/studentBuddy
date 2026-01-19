@@ -2,9 +2,55 @@
 @use "../base/" as b;
 
 .side-nav{
-    background-color: red;
+    background-color: $clr-main;
     @include flex-colum;
     width: 12rem;
     height: 100vh;
-    position: fixed;
+    visibility: hidden;
+    position: absolute;
+    padding: 2rem .4rem;
+
+    &__navi{
+
+        border-bottom: $clr-border solid 1px;
+        padding: .5rem 0;
+
+    }
+
+    &__li{
+        @include flex-row;
+        color:$clr-text-muted;
+        padding:.4rem .4rem;
+        border-radius: .4rem;
+        align-items: center;
+
+        transition: all .1s ease-in-out;
+        cursor: pointer;
+
+        gap: 0.75rem;
+        &__icon{
+            font-size: 1.2rem;
+            display: block;
+        }
+
+        p{
+            margin: 0;
+            line-height: 1;
+        }
+    }
+}
+
+// hover
+.side-nav__li:hover{
+    color: $clr-text-primary;
+    background-color: $clr-bg-light;
+}
+.side-nav__li:active{
+    color: $clr-accent;
+    background-color: $clr-bg-light;
+}
+
+.show{
+    visibility: visible;
+    position:static;
 }

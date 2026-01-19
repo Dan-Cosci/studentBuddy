@@ -7,8 +7,10 @@ const AppLayout = () => {
 
   return (
     <>
-      <Navbar />
-      <Outlet />
+      <main className="app-layout">
+        <Navbar />
+        <Outlet />
+      </main>
     </>
   )
 }

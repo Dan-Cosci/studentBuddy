@@ -208,12 +208,53 @@ pre {
   }
 }
 .side-nav {
-  background-color: red;
+  background-color: hsl(220, 10%, 18%);
   display: flex;
   flex-direction: column;
   width: 12rem;
   height: 100vh;
-  position: fixed;
+  visibility: hidden;
+  position: absolute;
+  padding: 2rem 0.4rem;
+}
+.side-nav__navi {
+  border-bottom: hsl(220, 10%, 30%) solid 1px;
+  padding: 0.5rem 0;
+}
+.side-nav__li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: hsl(210, 10%, 70%);
+  padding: 0.4rem 0.4rem;
+  border-radius: 0.4rem;
+  align-items: center;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+  gap: 0.75rem;
+}
+.side-nav__li__icon {
+  font-size: 1.2rem;
+  display: block;
+}
+.side-nav__li p {
+  margin: 0;
+  line-height: 1;
+}
+
+.side-nav__li:hover {
+  color: hsl(210, 20%, 96%);
+  background-color: hsl(220, 10%, 22%);
+}
+
+.side-nav__li:active {
+  color: hsl(4, 70%, 55%);
+  background-color: hsl(220, 10%, 22%);
+}
+
+.show {
+  visibility: visible;
+  position: static;
 }
 
 .landing-nav {
@@ -264,6 +305,13 @@ pre {
 .landing-nav__li:hover, .landing-nav__li:active {
   cursor: pointer;
   color: hsl(4, 70%, 55%);
+}
+
+.app-layout {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-height: 100vh;
 }
 
 .landing {

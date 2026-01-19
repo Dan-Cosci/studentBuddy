@@ -1,0 +1,9 @@
+@use "../abstract/" as *;
+@use "../base/" as b;
+
+
+.app-layout{
+    @include flex-row;
+    min-height: 100vh;
+
+}
