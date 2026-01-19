@@ -1,0 +1,67 @@
+@use "../abstract/" as *;
+@use "../base/" as b;
+
+
+.dropDown{
+    color: $clr-text-muted;
+
+    &__container{
+        @include flex-row;
+        justify-content: space-between;
+        padding: .2rem .5rem;
+        border-radius: .2rem;
+
+    }
+
+    &__title{
+        font-size: 1rem;
+        font-weight: 400;
+        transition: all .1s ease-in-out;
+        @include flex-row;
+        align-items: center;
+        gap: .75rem;
+
+    }
+    
+    &__container:hover{
+        color: $clr-text-primary;
+        cursor: pointer;
+        background-color: $clr-bg-light
+    }
+    &__container:active{
+        background-color: $clr-main
+    }
+
+    &__right{
+        @include flex-row;
+        align-items: center;
+        gap: .7rem;
+        cursor: pointer;
+        
+        &__icon{
+            font-size: .8rem;
+            display: block;
+        }
+    }
+
+
+
+    &__ul{
+        @include flex-colum;
+        gap: .2rem;
+        visibility: hidden;
+        position: absolute;
+    }
+
+    &__li{
+        @include flex-row;
+        align-items: center;
+        gap: .75rem;
+    }
+}
+
+.show {
+    visibility:visible;
+    position: static;
+
+}

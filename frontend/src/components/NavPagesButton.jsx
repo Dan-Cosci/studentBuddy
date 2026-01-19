@@ -1,8 +1,10 @@
 import React from 'react'
 
-const NavPagesButton = () => {
+const NavPagesButton = (props) => {
+  const { pageName } = props;
+
   return (
-    <div>NavPagesButton</div>
+    <li className='side-nav__li'>{pageName}</li>
   )
 }
 

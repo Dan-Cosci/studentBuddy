@@ -218,7 +218,6 @@ pre {
   padding: 2rem 0.4rem;
 }
 .side-nav__navi {
-  border-bottom: hsl(220, 10%, 30%) solid 1px;
   padding: 0.5rem 0;
 }
 .side-nav__li {
@@ -305,6 +304,67 @@ pre {
 .landing-nav__li:hover, .landing-nav__li:active {
   cursor: pointer;
   color: hsl(4, 70%, 55%);
+}
+
+.dropDown {
+  color: hsl(210, 10%, 70%);
+}
+.dropDown__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.2rem;
+}
+.dropDown__title {
+  font-size: 1rem;
+  font-weight: 400;
+  transition: all 0.1s ease-in-out;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-items: center;
+  gap: 0.75rem;
+}
+.dropDown__container:hover {
+  color: hsl(210, 20%, 96%);
+  cursor: pointer;
+  background-color: hsl(220, 10%, 22%);
+}
+.dropDown__container:active {
+  background-color: hsl(220, 10%, 18%);
+}
+.dropDown__right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-items: center;
+  gap: 0.7rem;
+  cursor: pointer;
+}
+.dropDown__right__icon {
+  font-size: 0.8rem;
+  display: block;
+}
+.dropDown__ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  visibility: hidden;
+  position: absolute;
+}
+.dropDown__li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.show {
+  visibility: visible;
+  position: static;
 }
 
 .app-layout {

@@ -1,7 +1,15 @@
 import React from 'react'
 import { FaCog, FaHome, FaRobot, FaSearch } from 'react-icons/fa'
+import Dropdown from './Dropdown';
+
 
 const Navbar = () => {
+  const pages = {
+    sectionName:"Pages",
+    items: ['Me', 'Diary', 'School']
+  };
+
+
   return (
     <aside className="side-nav show">
 
@@ -24,12 +32,8 @@ const Navbar = () => {
           </li>
       </ul>
 
-      <div className="side-nav__pages">
-        <ul>
-          <li className="side-nav__pages__li">Home</li>
-          <li className="side-nav__pages__li">About</li>
-          <li className="side-nav__pages__li">Contact</li>
-        </ul>
+      <div className="side-nav__navi pages">
+        <Dropdown sectionName="Pages" items={pages.items} />
       </div>
 
     </aside>
