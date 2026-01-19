@@ -37,7 +37,7 @@ const Dropdown = (props) => {
 
        <ul className={`dropDown__ul ${open ? 'show' : ''}`}>  
         {items.map((item) => (
-          <li className="dropDown__li">
+          <li key={item} className="dropDown__li">
             <FaBook className="dropDown__li__icon" />
             <span>{item}</span>
           </li>

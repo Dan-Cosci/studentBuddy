@@ -384,6 +384,23 @@ pre {
   position: static;
 }
 
+.markdown {
+  min-height: 100vh;
+  width: 100%;
+  padding: 3rem;
+  caret-color: hsl(4, 70%, 55%);
+  --mdxeditor-text-color:$clr-text-primary !important;
+}
+.markdown p,
+.markdown span,
+.markdown li,
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown blockquote {
+  color: hsl(210, 20%, 96%);
+}
+
 .app-layout {
   display: flex;
   flex-direction: row;
@@ -644,6 +661,11 @@ pre {
 }
 .error-page__actions .scdry:active {
   background-color: hsl(220, 10%, 18%);
+}
+
+.active {
+  min-height: 100vh;
+  width: 100%;
 }
 
 /*# sourceMappingURL=style.css.map */

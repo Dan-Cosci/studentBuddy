@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import toast ,{ Toaster } from "react-hot-toast";
 import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
+import '@mdxeditor/editor/style.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
