@@ -1,0 +1,10 @@
+@use "../abstract/" as *;
+@use "../base/" as b;
+
+.side-nav{
+    background-color: red;
+    @include flex-colum;
+    width: 12rem;
+    height: 100vh;
+    position: fixed;
+}

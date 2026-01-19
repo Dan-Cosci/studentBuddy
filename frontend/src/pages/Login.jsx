@@ -14,9 +14,9 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      await login(JSON.stringify({ email, password }));
+      const user = await login(JSON.stringify({ email, password }));
       toast.success('Login successful');
-      navigate('/app');
+      navigate('/app', { state: { user } });
     } catch (error) {
       console.log(error);
       toast.error('Login failed');

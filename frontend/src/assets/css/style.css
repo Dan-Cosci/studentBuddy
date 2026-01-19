@@ -207,6 +207,15 @@ pre {
     align-items: center;
   }
 }
+.side-nav {
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  width: 12rem;
+  height: 100vh;
+  position: fixed;
+}
+
 .landing-nav {
   display: flex;
   justify-content: center;
