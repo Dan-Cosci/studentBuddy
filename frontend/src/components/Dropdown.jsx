@@ -1,11 +1,17 @@
 import React, { use, useState } from 'react'
-import { FaAngleDown, FaAngleRight, FaBook, FaEllipsisH, FaPlus } from 'react-icons/fa';
+import { FaAngleDown, FaAngleRight, FaBook, FaPlus } from 'react-icons/fa';
 
 const Dropdown = (props) => {
 
   const {sectionName, items} = props;
   const [open, setOpen] = useState(true);
   const [visible, setVisible] = useState(false);
+
+  const handlePlus = (e) => {
+    e.stopPropagation();
+
+  }
+
 
   return (
     <>
@@ -14,8 +20,9 @@ const Dropdown = (props) => {
        <div className="dropDown__container"
         onMouseEnter={() => setVisible(true)}
         onMouseLeave={() => setVisible(false)}
+        onClick={() => setOpen(!open)}
        >
-         <p className="dropDown__title" onClick={() => setOpen(!open)}>
+         <p className="dropDown__title" >
           {sectionName}
           {visible &&
             (open ? <FaAngleDown /> : <FaAngleRight />)
@@ -23,8 +30,7 @@ const Dropdown = (props) => {
         </p>
        {visible && 
         <div className="dropDown__right">
-          <FaEllipsisH className='dropDown__right__icon'/>
-          <FaPlus className='dropDown__right__icon'/>
+          <FaPlus className='dropDown__right__icon' onClick={handlePlus}/>
         </div>
        }
        </div>

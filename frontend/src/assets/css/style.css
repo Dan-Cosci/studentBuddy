@@ -314,8 +314,17 @@ pre {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 0.2rem 0.5rem;
+  padding: 0.1rem 0.3rem;
   border-radius: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+.dropDown__container:hover {
+  color: hsl(210, 20%, 96%);
+  cursor: pointer;
+  background-color: hsl(220, 10%, 22%);
+}
+.dropDown__container:active {
+  background-color: hsl(220, 10%, 18%);
 }
 .dropDown__title {
   font-size: 1rem;
@@ -326,14 +335,6 @@ pre {
   align-items: center;
   align-items: center;
   gap: 0.75rem;
-}
-.dropDown__container:hover {
-  color: hsl(210, 20%, 96%);
-  cursor: pointer;
-  background-color: hsl(220, 10%, 22%);
-}
-.dropDown__container:active {
-  background-color: hsl(220, 10%, 18%);
 }
 .dropDown__right {
   display: flex;
@@ -347,10 +348,15 @@ pre {
   font-size: 0.8rem;
   display: block;
 }
+.dropDown__right__icon:hover {
+  color: hsl(210, 20%, 96%);
+}
+.dropDown__right__icon:active {
+  color: hsl(4, 70%, 55%);
+}
 .dropDown__ul {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
   visibility: hidden;
   position: absolute;
 }
@@ -358,8 +364,19 @@ pre {
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.2rem;
   align-items: center;
   gap: 0.75rem;
+  transition: all 0.1s ease-in-out;
+}
+.dropDown__li:hover {
+  color: hsl(210, 20%, 96%);
+  cursor: pointer;
+  background-color: hsl(220, 10%, 22%);
+}
+.dropDown__li:active {
+  background-color: hsl(220, 10%, 18%);
 }
 
 .show {

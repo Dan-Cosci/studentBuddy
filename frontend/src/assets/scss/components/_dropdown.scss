@@ -8,9 +8,17 @@
     &__container{
         @include flex-row;
         justify-content: space-between;
-        padding: .2rem .5rem;
+        padding: .1rem .3rem;
         border-radius: .2rem;
-
+        margin-bottom: .2rem;
+    }
+    &__container:hover{
+        color: $clr-text-primary;
+        cursor: pointer;
+        background-color: $clr-bg-light
+    }
+    &__container:active{
+        background-color: $clr-main
     }
 
     &__title{
@@ -23,14 +31,6 @@
 
     }
     
-    &__container:hover{
-        color: $clr-text-primary;
-        cursor: pointer;
-        background-color: $clr-bg-light
-    }
-    &__container:active{
-        background-color: $clr-main
-    }
 
     &__right{
         @include flex-row;
@@ -42,21 +42,39 @@
             font-size: .8rem;
             display: block;
         }
+        &__icon:hover{
+            color: $clr-text-primary;
+        }
+        &__icon:active{
+            color: $clr-accent;
+        }
     }
 
 
 
     &__ul{
         @include flex-colum;
-        gap: .2rem;
+        // gap: .2rem;
+
         visibility: hidden;
         position: absolute;
     }
-
+    
     &__li{
         @include flex-row;
+        padding: .2rem .5rem;
+        border-radius: .2rem;
         align-items: center;
         gap: .75rem;
+        transition: all .1s ease-in-out;
+    }
+    &__li:hover{
+        color: $clr-text-primary;
+        cursor: pointer;
+        background-color: $clr-bg-light
+    }
+    &__li:active{
+        background-color: $clr-main
     }
 }
 
