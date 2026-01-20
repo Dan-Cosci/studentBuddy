@@ -1,8 +1,10 @@
-import React, { use, useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { FaCog, FaHome, FaRobot, FaSearch, FaSignOutAlt } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom';
 import Dropdown from './Dropdown';
 import { useAuth } from '../context/AuthContext.jsx'
+import { useUI } from '../context/UIContext.jsx'
+
 
 
 const Navbar = () => {
@@ -12,28 +14,16 @@ const Navbar = () => {
   };
   const {logoutUser} = useAuth();
   const navigate = useNavigate();
-  const [open, isOpen] = useState(true);
 
   const logout = ()=>{
     logoutUser();
     navigate('/'); 
   }
-
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.ctrlKey && e.key === 'b') {
-        e.preventDefault();
-        console.log("ctrl+b pressed")
-        isOpen(prev => !prev);
-      }
-    }
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  },[]);
+  const { sidebarOpen } = useUI();
 
 
   return (
-    <aside className={`side-nav ${open ? 'side-nav--open' : ''}`}>
+    <aside className={`side-nav ${sidebarOpen ? 'side-nav--open' : ''}`}>
 
       <div>
         <ul className="side-nav__navi">
