@@ -1,85 +1,99 @@
 @use "../abstract/" as *;
 @use "../base/" as b;
 
+.dropDown {
+  color: $clr-text-muted;
+  position: relative;
 
-.dropDown{
-    color: $clr-text-muted;
+  &__container {
+    @include flex-row;
+    justify-content: space-between;
+    align-items: center;
 
-    &__container{
-        @include flex-row;
-        justify-content: space-between;
-        padding: .1rem .3rem;
-        border-radius: .2rem;
-        margin-bottom: .2rem;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.2rem;
+    margin-bottom: 0.2rem;
+
+    cursor: pointer;
+    transition: background-color 0.1s ease, color 0.1s ease;
+
+    &:hover {
+      color: $clr-text-primary;
+      background-color: $clr-bg-light;
     }
-    &__container:hover{
+
+    &:active {
+      background-color: $clr-main;
+    }
+  }
+
+  &__title {
+    @include flex-row;
+    align-items: center;
+    gap: 0.75rem;
+
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  &__right {
+    @include flex-row;
+    align-items: center;
+    gap: 0.7rem;
+
+    &__icon {
+      font-size: 0.8rem;
+      transition: color 0.1s ease;
+
+      &:hover {
         color: $clr-text-primary;
-        cursor: pointer;
-        background-color: $clr-bg-light
+      }
+
+      &:active {
+        color: $clr-accent;
+      }
     }
-    &__container:active{
-        background-color: $clr-main
+  }
+
+  &__ul {
+    @include flex-colum;
+    gap: 0.2rem;
+
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: all 0.15s ease;
+    &--open {
+      
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+
+  &__li {
+    @include flex-row;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.2rem;
+    cursor: pointer;
+
+    transition: background-color 0.1s ease, color 0.1s ease;
+
+    &:hover {
+      color: $clr-text-primary;
+      background-color: $clr-bg-light;
     }
 
-    &__title{
-        font-size: 1rem;
-        font-weight: 400;
-        transition: all .1s ease-in-out;
-        @include flex-row;
-        align-items: center;
-        gap: .75rem;
-
+    &:active {
+      background-color: $clr-main;
     }
-    
-
-    &__right{
-        @include flex-row;
-        align-items: center;
-        gap: .7rem;
-        cursor: pointer;
-        
-        &__icon{
-            font-size: .8rem;
-            display: block;
-        }
-        &__icon:hover{
-            color: $clr-text-primary;
-        }
-        &__icon:active{
-            color: $clr-accent;
-        }
-    }
-
-
-
-    &__ul{
-        @include flex-colum;
-        // gap: .2rem;
-
-        visibility: hidden;
-        position: absolute;
-    }
-    
-    &__li{
-        @include flex-row;
-        padding: .2rem .5rem;
-        border-radius: .2rem;
-        align-items: center;
-        gap: .75rem;
-        transition: all .1s ease-in-out;
-    }
-    &__li:hover{
-        color: $clr-text-primary;
-        cursor: pointer;
-        background-color: $clr-bg-light
-    }
-    &__li:active{
-        background-color: $clr-main
-    }
-}
-
-.show {
-    visibility:visible;
-    position: static;
-
+  }
 }

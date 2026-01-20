@@ -1,20 +1,197 @@
 @use "../abstract/" as *;
 @use "../base/" as b;
 
-.markdown{
-    min-height: 100vh;
-    width: 100%;
-    padding: 3rem;
-    caret-color: $clr-accent;
-    --mdxeditor-text-color:$clr-text-primary !important;
-    p,
+.markdown {
+  min-height: 100vh;
+  width: 100%;
+  padding: 3rem;
+  caret-color: $clr-accent;
+  --mdxeditor-text-color: $clr-text-primary !important;
+
+  // ---------------------------
+  // Text elements
+  // ---------------------------
+  p,
   span,
   li,
   h1,
   h2,
   h3,
-  blockquote {
+  blockquote,
+  strong,
+  em {
     color: $clr-text-primary;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-family: 'Inter', sans-serif;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  // ---------------------------
+  // Headings
+  // ---------------------------
+  h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  h2 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  // Reduce spacing after heading for next paragraph
+  h1 + p,
+  h2 + p,
+  h3 + p {
+    margin-top: -0.5rem;
+  }
+
+  // ---------------------------
+  // Links
+  // ---------------------------
+  a {
+    color: $clr-accent;
+    text-decoration: underline;
+    transition: color 0.2s;
+    &:hover {
+      color: $clr-accent;
+    }
+  }
+
+  // ---------------------------
+  // Lists
+  // ---------------------------
+  ul,
+  ol {
+    list-style: none;
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+
+    li {
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 0.75rem;
+
+      // -------------------
+      // Regular bullets
+      // -------------------
+      &.bullet-item::before {
+        content: '•';
+        position: absolute;
+        left: 0;
+        top: 0.1rem;
+        font-size: 1rem;
+        color: $clr-accent;
+      }
+
+      // -------------------
+      // Checklist items
+      // -------------------
+      &.checkbox-item {
+        padding-left: 2.2rem;
+
+        input[type="checkbox"] {
+          position: absolute;
+          left: 0;
+          top: 0.15rem;
+          transform: scale(1.2);
+          accent-color: $clr-accent;
+          cursor: pointer;
+        }
+
+        input[type="checkbox"] + span {
+          margin-left: 0.5rem;
+        }
+      }
+    }
+  }
+
+  // ---------------------------
+  // Code
+  // ---------------------------
+  pre {
+    background-color: $clr-border;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+  }
+
+  code {
+    font-family: 'Fira Code', monospace;
+    background-color: $clr-secondary;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-size: 0.95rem;
+  }
+
+  // ---------------------------
+  // Blockquotes
+  // ---------------------------
+  blockquote {
+    border-left: 4px solid $clr-accent;
+    padding-left: 1rem;
+    color: $clr-text-muted;
+    font-style: italic;
+    margin: 1rem 0;
+  }
+
+  // ---------------------------
+  // Horizontal rules
+  // ---------------------------
+  hr {
+    border: none;
+    border-top: 1px solid ;
+    margin: 2rem 0;
+  }
+
+  // ---------------------------
+  // Tables
+  // ---------------------------
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+
+    th,
+    td {
+      border: 1px solid ;
+      padding: 0.75rem 1rem;
+      text-align: left;
+    }
+
+    th {
+      background-color: $clr-border;
+    }
+
+    tr:nth-child(even) {
+      background-color: $clr-border;
+    }
+  }
+
+  // ---------------------------
+  // Images
+  // ---------------------------
+  img {
+    max-width: 100%;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
   }
 }
-

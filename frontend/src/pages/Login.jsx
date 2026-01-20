@@ -18,7 +18,7 @@ const Login = () => {
     try {
       const user = await login(JSON.stringify({ email, password }));
       toast.success('Login successful');
-      loginUser(user.data);
+      loginUser(user.data.data);
       console.log(user);
       navigate('/app');
     } catch (error) {

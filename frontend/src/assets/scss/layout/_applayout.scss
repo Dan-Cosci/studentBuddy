@@ -4,6 +4,8 @@
 
 .app-layout{
     @include flex-row;
-    min-height: 100vh;
+    height: 100vh;
+    overflow: scroll;
+    overflow-y: auto;
 
 }

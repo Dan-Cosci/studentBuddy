@@ -1,12 +1,21 @@
 import React from 'react'
-import { headingsPlugin, listsPlugin, markdownShortcutPlugin, MDXEditor, quotePlugin } from '@mdxeditor/editor'
+import { headingsPlugin, listsPlugin, markdownShortcutPlugin, MDXEditor, quotePlugin} from '@mdxeditor/editor'
 
 
 const Markdown = () => {
   return (
     <MDXEditor 
     contentEditableClassName='markdown' 
-    markdown='# hello world' 
+    markdown='# hello world # hello world
+    # hello world # hello world
+    # hello world # hello world
+    # hello world # hello world
+    # hello world # hello world
+    # hello world # hello world
+    # hello world # hello world
+    # hello world # hello world
+    # hello world # hello world
+    # hello world # hello world' 
     plugins={[headingsPlugin(),listsPlugin(),quotePlugin(),markdownShortcutPlugin()]}/>
   )
 }

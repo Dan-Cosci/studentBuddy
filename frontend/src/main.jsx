@@ -4,7 +4,6 @@ import toast ,{ Toaster } from "react-hot-toast";
 import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
 import { AuthProvider } from './context/AuthContext.jsx';
-import '@mdxeditor/editor/style.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

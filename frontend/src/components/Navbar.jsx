@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { use, useEffect, useState } from 'react'
 import { FaCog, FaHome, FaRobot, FaSearch, FaSignOutAlt } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom';
 import Dropdown from './Dropdown';
@@ -12,15 +12,28 @@ const Navbar = () => {
   };
   const {logoutUser} = useAuth();
   const navigate = useNavigate();
+  const [open, isOpen] = useState(true);
 
   const logout = ()=>{
     logoutUser();
     navigate('/'); 
   }
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.ctrlKey && e.key === 'b') {
+        e.preventDefault();
+        console.log("ctrl+b pressed")
+        isOpen(prev => !prev);
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  },[]);
+
 
   return (
-    <aside className="side-nav show">
+    <aside className={`side-nav ${open ? 'side-nav--open' : ''}`}>
 
       <div>
         <ul className="side-nav__navi">
