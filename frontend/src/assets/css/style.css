@@ -211,6 +211,7 @@ pre {
   background-color: hsl(220, 10%, 18%);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   width: 12rem;
   height: 100vh;
   visibility: hidden;

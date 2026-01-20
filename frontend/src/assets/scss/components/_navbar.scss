@@ -4,6 +4,7 @@
 .side-nav{
     background-color: $clr-main;
     @include flex-colum;
+    justify-content: space-between;
     width: 12rem;
     height: 100vh;
     visibility: hidden;
