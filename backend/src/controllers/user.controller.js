@@ -2,7 +2,7 @@ import User from "../models/user.model.js"
 
 export const GetUsers = async (req, res, next) => {
   try {
-    const users = await User.findAll();
+    const users = await User.find();
     res.status(200).json({
       success: true,
       message: "Users retrieved successfully",
@@ -15,7 +15,7 @@ export const GetUsers = async (req, res, next) => {
 
 export const GetUserDetails = async (req, res, next) => {
 
-  const user = await User.findByPk(req.params.id);
+  const user = await User.findById(req.params.id);
   if (!user) { 
     return res.status(404).json({
       success: false,

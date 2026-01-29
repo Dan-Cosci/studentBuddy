@@ -1,12 +1,13 @@
 import arcjet, { shield, detectBot, tokenBucket } from "@arcjet/node";
-import { ARCJET_KEY } from "./config.js";
+import { config } from "./config.js";
 
 export const aj = arcjet({
 
   // Get your site key from https://app.arcjet.com and set it as an environment
   // variable rather than hard coding.
 
-  key: ARCJET_KEY,
+  key: config.arcjet.key,
+  env: config.arcjet.env,
   characteristics: ["ip.src", "user_agent", "tls.client.fingerprint"],
 
   rules: [

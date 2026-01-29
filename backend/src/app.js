@@ -4,10 +4,8 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 
 // database
-import { PORT } from './config/config.js';
+import { config } from './config/config.js';
 import connectDB from './config/database.js';
-import './models/user.model.js'; // Import User model to ensure it's registered
-import './models/note.model.js'; // Import Note model to ensure it's registered
 
 // routes
 import authRoutes from './routes/auth.routes.js';
@@ -51,11 +49,11 @@ app.get('/home', (req, res) => {
   res.sendFile('index.html', { root: './public'});
 });
 
-app.listen(PORT, async () => {
+app.listen(config.port, async () => {
   try {
     connectDB(); // Connect to the database
     console.log('\x1b[32mDatabase connected and sync successful.\x1b[0m');
-    console.log(`\x1b[32mServer is running on http://localhost:${PORT}\x1b[0m`);
+    console.log(`\x1b[32mServer is running on http://localhost:${config.port}\x1b[0m`);
   } catch (error) {
     console.error('\x1b[31mUnable to connect to the database:\x1b[0m', error);
     process.exit(1); // Exit the process if database connection fails
