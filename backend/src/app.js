@@ -23,6 +23,8 @@ const app = express();
 app.use(cors({
   origin: 'http://localhost:5173', // Allow requests from your frontend
   credentials: true, // Allow cookies to be sent
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow specific HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers
 }))
 
 // middleware
