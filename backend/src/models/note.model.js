@@ -1,56 +1,30 @@
-import { DataTypes, Model } from 'sequelize';
+import mongoose from "mongoose";
 
-import sequelize from "../config/database.js";
-
-/** Note model representing a note in the system.
- * This model includes fields for title, content, userId, and timestamps.
- * It also includes validation for title length and content presence.
- * @extends Model
- * @property {number} id - Unique identifier for the note.
- * @property {string} title - Title of the note, must be between 2 and 100 characters.
- * @property {string} content - Content of the note, must not be empty.
- * @property {number} userId - Foreign key referencing the user who created the note.
- * @property {Date} created_at - Timestamp of when the note was created.
- * @property {Date} updated_at - Timestamp of when the note was last updated.
- * @property {Date} deleted_at - Timestamp of when the note was soft deleted.
- * **/
-
-class Note extends Model {};
-Note.init({
-  id :{
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-    allowNull: false
+const noteSchema = new mongoose.Schema({
+  title:{
+    type: String,
+    required: true,
+    trim:true,
+    minlength: 1,
   },
-  title: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true,
-      len: [2, 100]
-    }
+  content:{
+    type: String,
+    required: true,
   },
-  content: {
-    type: DataTypes.TEXT,
-    allowNull: false,
+  userId:{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
   },
-  userId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-      model: 'Users', // Assuming the User model is named 'Users'
-      key: 'id'
-    }
+  deletedAt:{
+    type: Date,
+    default: null
   }
+
 },{
-  sequelize,
-  modelName: 'Note',
-  timestamps: true,
-  paranoid: true, // Enables soft deletes
-  createdAt: 'created_at',
-  updatedAt: 'updated_at',
-  deletedAt: 'deleted_at', // Optional, if you want to track soft deletes
+  timestamps:true,
+  versionKey: false,
 });
 
-export default Note
+const Note = mongoose.model('Note', noteSchema);
+export default Note;

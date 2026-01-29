@@ -7,8 +7,7 @@ config({path:'./.env.development.local'});
 
 export const {
   PORT, SERVER_URL,
-  DATABASE_PASSWORD, DATABASE_NAME,
-  HOST, DIALECT, DATABASE_ACCOUNT,
+  MONGODB_URI, 
   JWT_SECRET, JWT_EXPIRES_IN,
   GEMINI_KEY,
   ARCJET_ENV,ARCJET_KEY

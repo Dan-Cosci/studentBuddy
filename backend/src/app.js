@@ -5,7 +5,7 @@ import cors from 'cors';
 
 // database
 import { PORT } from './config/config.js';
-import sequelize from './config/database.js';
+import connectDB from './config/database.js';
 import './models/user.model.js'; // Import User model to ensure it's registered
 import './models/note.model.js'; // Import Note model to ensure it's registered
 
@@ -53,8 +53,7 @@ app.get('/home', (req, res) => {
 
 app.listen(PORT, async () => {
   try {
-    await sequelize.authenticate();
-    await sequelize.sync();
+    connectDB(); // Connect to the database
     console.log('\x1b[32mDatabase connected and sync successful.\x1b[0m');
     console.log(`\x1b[32mServer is running on http://localhost:${PORT}\x1b[0m`);
   } catch (error) {

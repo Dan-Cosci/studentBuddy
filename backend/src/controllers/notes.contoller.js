@@ -1,6 +1,6 @@
 import sequelize from "../config/database.js";
 import Note from "../models/note.model.js"
-import ai from "../services/gemini.service.js"
+import client from "../config/gemini.js"
 
 export const GetAllNotes = async (req, res, next) => {
   try {
