@@ -1,6 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
 
-import sequelize from "../database/database.js";
+import sequelize from "../config/database.js";
 
 /** * User model representing a user in the system.
  * This model includes fields for username, email,  password, and timestamps.

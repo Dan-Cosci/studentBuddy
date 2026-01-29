@@ -1,6 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
 
-import sequelize from "../database/database.js";
+import sequelize from "../config/database.js";
 
 /** Note model representing a note in the system.
  * This model includes fields for title, content, userId, and timestamps.

@@ -1,4 +1,4 @@
-import sequelize from "../database/database.js";
+import sequelize from "../config/database.js";
 import Note from "../models/note.model.js"
 import ai from "../services/gemini.service.js"
 

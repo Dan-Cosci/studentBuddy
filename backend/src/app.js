@@ -5,7 +5,7 @@ import cors from 'cors';
 
 // database
 import { PORT } from './config/config.js';
-import sequelize from './database/database.js';
+import sequelize from './config/database.js';
 import './models/user.model.js'; // Import User model to ensure it's registered
 import './models/note.model.js'; // Import Note model to ensure it's registered
 

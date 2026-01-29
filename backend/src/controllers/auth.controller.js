@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { JWT_SECRET, JWT_EXPIRES_IN } from '../config/config.js';
 
-import sequelize from "../database/database.js";
+import sequelize from "../config/database.js";
 import User from "../models/user.model.js";
 
 export const Login = async (req, res, next) => {
