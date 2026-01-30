@@ -6,8 +6,9 @@ dotenv.config({path:'./.env.development.local'});
 
 
 export const config = {
+  env: process.env.NODE_ENV,
   port: process.env.PORT || 3000,
-  serverUrl: process.env.SERVER_URL,
+  frontendUrl: process.env.FRONTEND_SERVER_URL,
 
   jwt:{
     secret: process.env.JWT_SECRET,
@@ -19,6 +20,12 @@ export const config = {
     host: process.env.MONGODB_HOST,
     username: process.env.MONGODB_USERNAME,
     password: process.env.MONGODB_PASSWORD,
+  },
+
+  mailtrap:{
+    domain: process.env.MAILTRAP_DOMAIN,
+    sandboxId: process.env.MAILTRAP_SANDBOX_ID,
+    key: process.env.MAILTRAP_API_KEY
   },
 
   arcjet:{

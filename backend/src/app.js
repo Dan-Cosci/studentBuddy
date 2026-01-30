@@ -19,7 +19,7 @@ import { arcjetMiddleware } from './middleware/arcjet.middleware.js';
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:5173', // Allow requests from your frontend
+  origin: config.env === 'production' ? config.frontendUrl : ['*'], // Allow requests from your frontend
   credentials: true, // Allow cookies to be sent
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow specific HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers
@@ -49,15 +49,15 @@ app.get('/home', (req, res) => {
   res.sendFile('index.html', { root: './public'});
 });
 
-app.listen(config.port, async () => {
-  try {
-    connectDB(); // Connect to the database
+
+connectDB().then(() => {
+  app.listen(config.port, () =>{
     console.log('\x1b[32mDatabase connected and sync successful.\x1b[0m');
     console.log(`\x1b[32mServer is running on http://localhost:${config.port}\x1b[0m`);
-  } catch (error) {
-    console.error('\x1b[31mUnable to connect to the database:\x1b[0m', error);
-    process.exit(1); // Exit the process if database connection fails
-  }
+  });
+}).catch((error) => {
+  console.error('\x1b[31mUnable to connect to the database:\x1b[0m', error);
+  process.exit(1); // Exit the process if database connection fails
 });
 
 export default app;
