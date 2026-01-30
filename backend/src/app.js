@@ -14,6 +14,8 @@ import userRoutes from './routes/users.routes.js';
 
 // middlewares
 import { arcjetMiddleware } from './middleware/arcjet.middleware.js';
+import { errorHandler } from './middleware/error.middleware.js';
+
 
 // main app
 const app = express();
@@ -33,10 +35,13 @@ app.use(cookieParser());
 app.use(morgan("dev"))
 app.use(arcjetMiddleware)
 
-//routes
+//routes  
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/notes', noteRoutes);
 app.use('/api/v1/users', userRoutes);
+
+// error handling middleware
+app.use(errorHandler);
 
 // welcome route
 app.get('/', (req, res) => {
@@ -52,6 +57,7 @@ app.get('/home', (req, res) => {
 
 connectDB().then(() => {
   app.listen(config.port, () =>{
+    console.log(config)
     console.log('\x1b[32mDatabase connected and sync successful.\x1b[0m');
     console.log(`\x1b[32mServer is running on http://localhost:${config.port}\x1b[0m`);
   });

@@ -24,24 +24,9 @@ const userSchema = new mongoose.Schema({
   },
   deletedAt:{
     type: Date,
-    default: null
-  },
-
-  verifcationCode:{
-    type: String,
-    select: false,
     default: null,
-  },
-  isEmailVerified:{
-    type: Boolean,
-    default: false,
-  },
-  passwordVerificationCode:{
-    type: String,
     select: false,
-    default: null,
   },
-  
 
 },{
   timestamps:true,

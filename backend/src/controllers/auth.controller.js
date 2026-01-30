@@ -1,8 +1,8 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { config } from '../config/config.js';
 
 import User from "../models/user.model.js";
+import { config } from '../config/config.js';
 
 export const Login = async (req, res, next) => {
   try {
@@ -42,15 +42,17 @@ export const Login = async (req, res, next) => {
       { expiresIn: config.jwt.expiresIn }
     );
 
+    res.cookie('token', 
+      token, 
+      { 
+        httpOnly: true, 
+        secure: config.env === 'production',
+        sameSite: config.env === 'production' ? 'none' : 'strict'
+      });
+
     res.status(200).json({
       success: true,
       message: "Login successful",
-      data: {
-        userId: user._id,
-        username: user.username,
-        email: user.email,
-        token
-      }
     });
 
   } catch (error) {
@@ -86,8 +88,9 @@ export const Register = async (req, res, next) => {
     const newUser = await User.create({
       username,
       email,
-      password: hashedPassword
+      password: hashedPassword,
     });
+
 
     // returns userid and jwt token
     const token = jwt.sign(
@@ -96,15 +99,16 @@ export const Register = async (req, res, next) => {
       { expiresIn: config.jwt.expiresIn }
     );
 
+    res.cookie('token',token,{
+      httpOnly: true, 
+      secure: config.env === 'production',
+      sameSite: config.env === 'production' ? 'none' : 'strict'
+    });
+
     res.status(201).json({
       success: true,
       message: "User registered successfully",
-      data: {
-        userId: newUser._id,
-        username: newUser.username,
-        email: newUser.email,
-        token
-      }
+      data: newUser._id,
     });
 
   } catch (error) {
@@ -112,16 +116,28 @@ export const Register = async (req, res, next) => {
   }
 };
 
-export const Logout = (req, res, next) => {
+export const Logout = async (req, res, next) => {
   res.status(200).json({
     success: true,
     message: "Logout route is not implemented yet"
   });
 };
 
-export const ForgotPassword = (req, res, next) => {
-  res.status(200).json({
-    success: true,
-    message: "Forgot Password route is not implemented yet"
-  });
+export const ResetPassword = (req, res, next) => {};
+
+export const Me = async (req, res, next) => {
+  const { token } = req.cookies;
+  if (!token) return res.status(401).json({ success: false, message: "Unauthorized" });
+
+  const decoded = jwt.verify(token, config.jwt.secret)
+
+  try {
+    const u = await User.findById(decoded.userId);
+    if (!u) return res.status(404).json({ success: false, message: "User not found" });
+    
+    res.status(200).json({ success: true, data: u });
+  } catch (error) {
+    next(error)
+  }
 };
+
