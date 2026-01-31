@@ -1,23 +1,21 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { login } from "../services/auth.service.js"
 import { toast } from 'react-hot-toast';
-
-
+import useAuthStore from "../AuthStore.js";
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const {login} = useAuthStore();
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const user = await login(JSON.stringify({ email, password }));
       toast.success('Login successful');
-      // loginUser(user.data.data);
-      console.log(user);
+      await login({email, password});
       navigate('/app');
     } catch (error) {
       console.log(error);

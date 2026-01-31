@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { register } from "../services/auth.service.js"
 import { toast } from 'react-hot-toast';
-
+import useAuthStore from "../AuthStore.js";
 
 const Register = () => {
   const [email, setEmail] = useState('');
+  const { register } = useAuthStore();
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      await register(JSON.stringify({ email, password, username }));
+      await register({ email, password, username });
       toast.success('Registration successful');
       navigate('/app');
     } catch (error) {

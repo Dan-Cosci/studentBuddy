@@ -1,14 +1,18 @@
 import { Navigate, Outlet } from "react-router-dom";
+import useAuthStore from "../features/auth/AuthStore.js";
+import { useEffect } from "react";
 
 const ProtectedRoute = () => {
 
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
+  const { isAuth, loading, checkAuth } = useAuthStore();
 
-  // if (!user) {
-  //   return <Navigate to="/login" replace />;
-  // }
+  useEffect(() => {
+    checkAuth();
+  },[]);
+
+  if (loading) return <div>Loading...</div>;
+
+  if (!isAuth) return <Navigate to="/login" replace={true} />;
 
   return <Outlet />;
 };

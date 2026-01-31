@@ -16,7 +16,7 @@ export const GetAllNotes = async (req, res, next) => {
 
 export const GetAllUserNotes = async (req, res, next) => {
   try {
-    const { userId } = req.params;
+    const userId = req.userId;
     const notes = await Note.find({ userId });
 
     res.status(200).json({
@@ -31,7 +31,7 @@ export const GetAllUserNotes = async (req, res, next) => {
 
 export const GetNoteDetails = async (req, res, next) => {
   try {
-    const { userId, noteId } = req.params;
+    const { userId, noteId } = req.userId;
 
     const note = await Note.findById(noteId);
     if (!note) {
@@ -60,7 +60,7 @@ export const GetNoteDetails = async (req, res, next) => {
 
 export const AddNote = async (req, res, next) => {
   try {
-    const { userId } = req.params;
+    const { userId } = req.userId;
     const { title, content } = req.body;
 
     if (!title || !content) {
@@ -88,7 +88,7 @@ export const AddNote = async (req, res, next) => {
 
 export const updateNote = async (req, res, next) => {
   try {
-    const { noteId } = req.params;
+    const { noteId } = req.userId;
     const { title, content } = req.body;
 
     if (!title || !content) {
@@ -129,7 +129,7 @@ export const updateNote = async (req, res, next) => {
 
 export const deleteNote = async (req, res, next) => {
   try {
-    const { noteId } = req.params;
+    const { noteId } = req.userId;
 
     const note = await Note.findById(noteId);
     if (!note) {
@@ -159,7 +159,7 @@ export const deleteNote = async (req, res, next) => {
   }
 };
 
-export const summarizeNote = async (req, res, next) => {
+export const summarizeNote = async (req, res) => {
   const greet = await ai("introduce yourself");
   res.status(200).json({
     success: true,

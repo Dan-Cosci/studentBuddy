@@ -108,7 +108,6 @@ export const Register = async (req, res, next) => {
     res.status(201).json({
       success: true,
       message: "User registered successfully",
-      data: newUser._id,
     });
 
   } catch (error) {
@@ -117,9 +116,15 @@ export const Register = async (req, res, next) => {
 };
 
 export const Logout = async (req, res) => {
+  res.clearCookie('token',{
+    httpOnly: true, 
+    secure: config.env === 'production',
+    sameSite: config.env === 'production' ? 'none' : 'strict'
+  });
+
   res.status(200).json({
     success: true,
-    message: "Logout route is not implemented yet"
+    message: "Logout successful"
   });
 };
 

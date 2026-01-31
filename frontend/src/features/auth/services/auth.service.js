@@ -13,3 +13,9 @@ export const register = async (data) => {
 export const logout = () => {
   localStorage.removeItem("user");
 };
+
+export const checkAuth = async () => {
+  return api.get("/auth/me");
+}
+
+

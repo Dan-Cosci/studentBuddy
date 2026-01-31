@@ -1,11 +1,6 @@
 import instance from "../../../config/api.js";
 
 const api = instance;
-const user = localStorage.getItem('user');
-if (user) {
-  const parsedUser = JSON.parse(user);
-  api.defaults.headers.common['Authorization'] = `Bearer ${parsedUser.token}`;
-}
 
 api.defaults.withCredentials= true
 api.defaults.headers.common['Content-Type'] = 'application/json';
