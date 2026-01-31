@@ -1,46 +1,42 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { register } from "../services/auth.service.js"
+import { login } from "../../../services/auth.service.js"
 import { toast } from 'react-hot-toast';
+import { useAuth } from '../context/AuthContext.jsx';
 
 
-const Register = () => {
+
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [username, setUsername] = useState('');
   const navigate = useNavigate();
+  const { loginUser } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      await register(JSON.stringify({ email, password, username }));
-      toast.success('Registration successful');
+      const user = await login(JSON.stringify({ email, password }));
+      toast.success('Login successful');
+      loginUser(user.data.data);
+      console.log(user);
       navigate('/app');
     } catch (error) {
-      toast.error('Registration failed');
+      console.log(error);
+      toast.error('Login failed');
     }
   }
   
 
   return (
     <>
-      <div className="register">
-        <div className="register__bubble">
-          <div className="register__bubble__header">
-            <h1>Register</h1>
+      <div className="login">
+        <div className="login__bubble">
+          <div className="login__bubble__header">
+            <h1>Login</h1>
           </div>
-          <div className="register__bubble__body">
+          <div className="login__bubble__body">
             <form onSubmit={handleSubmit}> 
-              <label>Username</label>
-              <input 
-                type="text" 
-                placeholder='Username' 
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-              />
-
               <label>Email</label>
               <input 
                 type="text" 
@@ -58,8 +54,8 @@ const Register = () => {
                 required 
               />
               <div className="ct">
-                <button type="submit">Register</button>
-                <p>Already have an account? <span><Link to="/login">Login now!</Link></span></p>
+                <button type="submit">Login</button>
+                <p>Don't have an account? <span><Link to="/register">Register now!</Link></span></p>
               </div>
             </form>
 
@@ -71,4 +67,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default Login

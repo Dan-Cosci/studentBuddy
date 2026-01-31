@@ -7,10 +7,8 @@ authRoutes.post('/login', r.Login);
 authRoutes.post('/register', r.Register);
 authRoutes.post('/logout', r.Logout);
 
-authRoutes.post('/forgot-password', (req, res)=>{});
-authRoutes.post('/reset-password', (req, res)=>{});
-authRoutes.post('/verify-email', (req, res)=>{});
+authRoutes.post('/reset-password', r.ResetPassword);
 
-authRoutes.get('/me', (req, res)=>{});
+authRoutes.get('/me', r.Me);
 
 export default authRoutes;

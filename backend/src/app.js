@@ -57,13 +57,11 @@ app.get('/home', (req, res) => {
 
 connectDB().then(() => {
   app.listen(config.port, () =>{
-    console.log(config)
     console.log('\x1b[32mDatabase connected and sync successful.\x1b[0m');
     console.log(`\x1b[32mServer is running on http://localhost:${config.port}\x1b[0m`);
   });
 }).catch((error) => {
   console.error('\x1b[31mUnable to connect to the database:\x1b[0m', error);
-  process.exit(1); // Exit the process if database connection fails
 });
 
 export default app;

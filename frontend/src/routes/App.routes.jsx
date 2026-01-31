@@ -1,9 +1,9 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import AppLayout from '../layouts/AppLayout.jsx'
-import Page404 from '../pages/Page404.jsx'
+import AppLayout from '../features/app/layout/AppLayout.jsx'
+import Page404 from '../features/Page404.jsx'
 
-import Active from '../pages/App/Active.jsx';
+import Active from '../features/app/pages/Active.jsx';
 import ProtectedRoute from './Protected.routes.jsx';
 
 

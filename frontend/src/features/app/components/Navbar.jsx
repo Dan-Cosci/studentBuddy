@@ -3,7 +3,7 @@ import { FaCog, FaHome, FaRobot, FaSearch, FaSignOutAlt } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom';
 import Dropdown from './Dropdown';
 import { useAuth } from '../context/AuthContext.jsx'
-import { useUI } from '../context/UIContext.jsx'
+import { useUI } from '../../../context/UIContext.jsx'
 
 
 
