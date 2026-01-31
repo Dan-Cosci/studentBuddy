@@ -21,7 +21,7 @@ import { errorHandler } from './middleware/error.middleware.js';
 const app = express();
 
 app.use(cors({
-  origin: config.env === 'production' ? config.frontendUrl : ['*'], // Allow requests from your frontend
+  origin: config.frontendUrl , // Allow requests from your frontend
   credentials: true, // Allow cookies to be sent
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow specific HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Allow specific headers

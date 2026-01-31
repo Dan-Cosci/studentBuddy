@@ -1,4 +1,4 @@
-import instance from "../config/api.js";
+import instance from "../../../config/api.js";
 
 const api = instance;
 const user = localStorage.getItem('user');

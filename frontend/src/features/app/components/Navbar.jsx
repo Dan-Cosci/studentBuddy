@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { FaCog, FaHome, FaRobot, FaSearch, FaSignOutAlt } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom';
 import Dropdown from './Dropdown';
-import { useAuth } from '../context/AuthContext.jsx'
 import { useUI } from '../../../context/UIContext.jsx'
 
 
@@ -12,11 +11,11 @@ const Navbar = () => {
     sectionName:"Dan",
     items: ['Me', 'Diary', 'School']
   };
-  const {logoutUser} = useAuth();
+  // const {logoutUser} = useAuth();
   const navigate = useNavigate();
 
   const logout = ()=>{
-    logoutUser();
+    // logoutUser();
     navigate('/'); 
   }
   const { sidebarOpen } = useUI();

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 import Navbar from '../components/Navbar.jsx'
-import { getData } from '../../../services/notes.service.js'
+import { getData } from '../services/notes.service.js'
 import { useUI } from '../../../context/UIContext.jsx'
 import useKeyboard from '../../../context/useKeyboard.jsx'
 
