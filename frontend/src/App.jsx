@@ -1,5 +1,5 @@
 import React from 'react'
-import "./assets/css/style.css"
+import "./assets/scss/main.scss"
 
 import MainRouter from './routes/Main.routes.jsx'
 
