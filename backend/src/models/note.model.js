@@ -16,6 +16,11 @@ const noteSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   },
+  notebookId:{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Notebook',
+    required: true
+  },
   deletedAt:{
     type: Date,
     default: null
