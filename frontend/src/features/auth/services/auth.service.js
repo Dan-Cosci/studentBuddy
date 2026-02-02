@@ -10,8 +10,9 @@ export const register = async (data) => {
   return api.post("/auth/register", data); 
 }
 
-export const logout = () => {
-  localStorage.removeItem("user");
+export const logout = async () => {
+  localStorage.removeItem("auth-storage");
+  return await api.post("/auth/logout");
 };
 
 export const checkAuth = async () => {

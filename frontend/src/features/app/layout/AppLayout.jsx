@@ -4,9 +4,13 @@ import Navbar from '../components/Navbar.jsx'
 import { getData } from '../services/notes.service.js'
 import { useUI } from '../../../context/UIContext.jsx'
 import useKeyboard from '../../../context/useKeyboard.jsx'
+import useAuthStore from '../../auth/AuthStore.js'
 
 
 const AppLayout = () => {
+  const { user } = useAuthStore();
+  console.log(user);
+
   useEffect(() => {
     const fetchData = async () => {
       try {

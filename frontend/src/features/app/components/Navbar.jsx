@@ -3,6 +3,7 @@ import { FaCog, FaHome, FaRobot, FaSearch, FaSignOutAlt } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom';
 import Dropdown from './Dropdown';
 import { useUI } from '../../../context/UIContext.jsx'
+import useAuthStore from '../../auth/AuthStore.js';
 
 
 
@@ -11,11 +12,12 @@ const Navbar = () => {
     sectionName:"Dan",
     items: ['Me', 'Diary', 'School']
   };
-  // const {logoutUser} = useAuth();
   const navigate = useNavigate();
+  const { logout } = useAuthStore();
 
-  const logout = ()=>{
-    // logoutUser();
+
+  const handleLogout = ()=>{
+    logout();
     navigate('/'); 
   }
   const { sidebarOpen } = useUI();
@@ -49,7 +51,7 @@ const Navbar = () => {
           <FaCog className="side-nav__li__icon" />
           <p>Settings</p>
           </li>
-        <li className="side-nav__li" onClick={logout}>
+        <li className="side-nav__li" onClick={handleLogout}>
           <FaSignOutAlt className="side-nav__li__icon" />
           <p>logout</p>
           </li>

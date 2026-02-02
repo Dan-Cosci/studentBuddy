@@ -9,6 +9,7 @@ const useAuthStore = create(
       isAuth: false,
       loading: false,
       error: null,
+      user:null,
 
       setLoading: (loading) => set({ loading }),
       setError: (error) => set({ error }),
@@ -21,7 +22,7 @@ const useAuthStore = create(
             set({ error: response.data.message, isAuth: false, loading: false });
             return;
           }
-          set({ isAuth: true, loading: false });
+          set({ isAuth: true, loading: false, user: response.data.user });
         } catch (err) {
           set({ error: err.message || 'Login failed', loading: false });
         }
@@ -42,7 +43,7 @@ const useAuthStore = create(
       },
 
       logout: () => {
-        set({ isAuth: false, loading: false, error: null });
+        set({ isAuth: false, loading: false, error: null, user:null});
         s.logout();
       },
 
@@ -52,7 +53,7 @@ const useAuthStore = create(
         try {
           const response = await s.checkAuth();
           if (response.status === 200) {
-            set({ isAuth: true, loading: false });
+            set({ isAuth: true, loading: false, user: response.data.user });
           } else {
             set({ isAuth: false, loading: false });
           }

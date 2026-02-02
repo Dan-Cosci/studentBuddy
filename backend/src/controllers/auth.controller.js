@@ -47,7 +47,8 @@ export const Login = async (req, res, next) => {
       { 
         httpOnly: true, 
         secure: config.env === 'production',
-        sameSite: config.env === 'production' ? 'none' : 'strict'
+        sameSite: config.env === 'production' ? 'none' : 'strict',
+        path:'/'
       });
 
     res.status(200).json({
@@ -102,7 +103,8 @@ export const Register = async (req, res, next) => {
     res.cookie('token',token,{
       httpOnly: true, 
       secure: config.env === 'production',
-      sameSite: config.env === 'production' ? 'none' : 'strict'
+      sameSite: config.env === 'production' ? 'none' : 'strict',
+      path:'/'
     });
 
     res.status(201).json({
@@ -119,7 +121,8 @@ export const Logout = async (req, res) => {
   res.clearCookie('token',{
     httpOnly: true, 
     secure: config.env === 'production',
-    sameSite: config.env === 'production' ? 'none' : 'strict'
+    sameSite: config.env === 'production' ? 'none' : 'strict',
+    path:'/'
   });
 
   res.status(200).json({
@@ -179,7 +182,7 @@ export const Me = async (req, res, next) => {
     const u = await User.findById(decoded.userId);
     if (!u) return res.status(404).json({ success: false, message: "User not found" });
     
-    res.status(200).json({ success: true, data: u });
+    res.status(200).json({ success: true, user: u });
   } catch (error) {
     next(error)
   }

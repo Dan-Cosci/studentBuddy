@@ -1,9 +1,9 @@
 import Note from "../models/note.model.js";
-// import { gemini } from "../config/gemini.js"
 
 export const GetAllNotes = async (req, res, next) => {
   try {
-    const notes = await Note.find();
+    const notes = await Note.find({ deletedAt: null });
+
     res.status(200).json({
       success: true,
       message: "Notes loaded successfully",
@@ -16,12 +16,16 @@ export const GetAllNotes = async (req, res, next) => {
 
 export const GetAllUserNotes = async (req, res, next) => {
   try {
-    const userId = req.userId;
-    const notes = await Note.find({ userId });
+    const { userId } = req.params;
+
+    const notes = await Note.find({
+      userId,
+      deletedAt: null
+    });
 
     res.status(200).json({
       success: true,
-      message: "Notes loaded successfully",
+      message: "User notes loaded successfully",
       data: notes
     });
   } catch (error) {
@@ -31,20 +35,20 @@ export const GetAllUserNotes = async (req, res, next) => {
 
 export const GetNoteDetails = async (req, res, next) => {
   try {
-    const { userId, noteId } = req.userId;
+    const { userId, noteId } = req.params;
 
     const note = await Note.findById(noteId);
-    if (!note) {
+    if (!note || note.deletedAt) {
       return res.status(404).json({
         success: false,
-        message: "Note Not Found"
+        message: "Note not found"
       });
     }
 
     if (note.userId.toString() !== userId) {
       return res.status(401).json({
         success: false,
-        message: "Unauthorized access, note from different user"
+        message: "Unauthorized access"
       });
     }
 
@@ -60,13 +64,13 @@ export const GetNoteDetails = async (req, res, next) => {
 
 export const AddNote = async (req, res, next) => {
   try {
-    const { userId } = req.userId;
+    const { userId } = req.params;
     const { title, content } = req.body;
 
     if (!title || !content) {
       return res.status(400).json({
         success: false,
-        message: "content and title fields are required"
+        message: "Title and content are required"
       });
     }
 
@@ -76,9 +80,9 @@ export const AddNote = async (req, res, next) => {
       userId
     });
 
-    res.status(200).json({
+    res.status(201).json({
       success: true,
-      message: `Added a new note to UserId: ${userId}`,
+      message: "Note created successfully",
       data: newNote
     });
   } catch (error) {
@@ -88,28 +92,21 @@ export const AddNote = async (req, res, next) => {
 
 export const updateNote = async (req, res, next) => {
   try {
-    const { noteId } = req.userId;
+    const { noteId } = req.params;
     const { title, content } = req.body;
 
     if (!title || !content) {
       return res.status(400).json({
         success: false,
-        message: "Title and content fields are required."
+        message: "Title and content are required"
       });
     }
 
     const note = await Note.findById(noteId);
-    if (!note) {
+    if (!note || note.deletedAt) {
       return res.status(404).json({
         success: false,
-        message: "Note not found."
-      });
-    }
-
-    if (note.deletedAt) {
-      return res.status(400).json({
-        success: false,
-        message: "Note deleted"
+        message: "Note not found"
       });
     }
 
@@ -119,7 +116,7 @@ export const updateNote = async (req, res, next) => {
 
     res.status(200).json({
       success: true,
-      message: `Updated note with ID: ${noteId}`,
+      message: "Note updated successfully",
       data: note
     });
   } catch (error) {
@@ -129,20 +126,13 @@ export const updateNote = async (req, res, next) => {
 
 export const deleteNote = async (req, res, next) => {
   try {
-    const { noteId } = req.userId;
+    const { noteId } = req.params;
 
     const note = await Note.findById(noteId);
-    if (!note) {
+    if (!note || note.deletedAt) {
       return res.status(404).json({
         success: false,
-        message: "Note not found."
-      });
-    }
-
-    if (note.deletedAt) {
-      return res.status(400).json({
-        success: false,
-        message: "Note already deleted"
+        message: "Note not found"
       });
     }
 
@@ -151,8 +141,7 @@ export const deleteNote = async (req, res, next) => {
 
     res.status(200).json({
       success: true,
-      message: "Note deleted",
-      data: note
+      message: "Note deleted successfully"
     });
   } catch (error) {
     next(error);
@@ -160,10 +149,8 @@ export const deleteNote = async (req, res, next) => {
 };
 
 export const summarizeNote = async (req, res) => {
-  const greet = await ai("introduce yourself");
   res.status(200).json({
     success: true,
-    message: "to be properly implemented",
-    data: greet
+    message: "Summarization not yet implemented"
   });
 };
