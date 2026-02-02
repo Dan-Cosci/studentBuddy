@@ -14,7 +14,7 @@ const AppLayout = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getData();
+        const data = await getData(user._id);
         console.log(data);
       } catch (error) {
         console.log(error);

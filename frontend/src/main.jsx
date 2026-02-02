@@ -7,7 +7,7 @@ import { UIProvider } from './context/UIContext.jsx';
 
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  // <StrictMode>
     <UIProvider>
       <BrowserRouter>
         <App />
@@ -18,5 +18,5 @@ createRoot(document.getElementById('root')).render(
           />
       </BrowserRouter>
     </UIProvider>
-  </StrictMode>,
+  // </StrictMode>,
 )
