@@ -1,6 +1,6 @@
 import React from 'react'
-import { headingsPlugin, listsPlugin, markdownShortcutPlugin, MDXEditor, quotePlugin} from '@mdxeditor/editor'
-import './markdown.scss'
+import { headingsPlugin, listsPlugin, markdownShortcutPlugin, MDXEditor, quotePlugin,} from '@mdxeditor/editor'
+// import './markdown.scss'
 
 
 const Markdown = () => {
@@ -17,7 +17,7 @@ const Markdown = () => {
     # hello world # hello world
     # hello world # hello world
     # hello world # hello world' 
-    plugins={[headingsPlugin(),listsPlugin(),quotePlugin(),markdownShortcutPlugin()]}/>
+    plugins={[headingsPlugin(),listsPlugin(),quotePlugin(),markdownShortcutPlugin(),]}/>
   )
 }
 
