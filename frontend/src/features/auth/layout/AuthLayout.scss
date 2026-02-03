@@ -1,0 +1,22 @@
+@use "../../../assets/scss/abstract/" as *;
+
+
+.auth-layout{
+    min-height: 100vh;
+    background: linear-gradient(
+        60deg,
+        $clr-secondary 50%,
+        $clr-accent 50%
+    );
+
+
+    &__left{
+        @include flex-colum;
+        align-items: center;
+        justify-content: center;
+
+        width: 50%;
+        height: 100vh;
+        // background-color: $clr-bg-light
+    }
+}

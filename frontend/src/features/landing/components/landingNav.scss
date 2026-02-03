@@ -13,6 +13,7 @@
     z-index: 100;
 
 
+
     &__logo-ct{
         @include flex-row;
         padding: 1rem 0;
@@ -38,15 +39,15 @@
     &__link-ct{
         background-color:$clr-main;
         padding: 1rem 2rem;
-        border-radius: 50rem
+        border-radius: 50rem;
     }
-
+    
     &__ul{
         @include flex-row;
         gap: 2rem;
         font-size: b.$fs-md;
         font-weight: 600;
-
+        list-style: none;        
     }
     
     &__li{

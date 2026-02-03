@@ -11,8 +11,6 @@ export const LandingRoutes = (
   <>
     <Route path="/" element={<LandingLayout />} >
       <Route index element={<Landing />} />
-      <Route path="login" element={<Login />} />
-      <Route path="register" element={<Register />} />
       <Route path="*" element={<Page404 />} />
     </Route>
   </>

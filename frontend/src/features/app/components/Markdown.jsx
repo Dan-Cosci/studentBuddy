@@ -1,6 +1,6 @@
 import React from 'react'
 import { headingsPlugin, listsPlugin, markdownShortcutPlugin, MDXEditor, quotePlugin,} from '@mdxeditor/editor'
-// import './markdown.scss'
+import './markdown.scss'
 
 
 const Markdown = () => {

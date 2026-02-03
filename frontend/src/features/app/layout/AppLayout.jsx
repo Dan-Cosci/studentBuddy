@@ -34,10 +34,13 @@ const AppLayout = () => {
 
   return (
     <>
-      <main className="app-layout">
-        <Navbar />
+     <main className="app-layout">
+      <Navbar />
+      <section className="app-content">
         <Outlet />
-      </main>
+      </section>
+    </main>
+
     </>
   )
 }

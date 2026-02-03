@@ -2,10 +2,15 @@
 @use "../../../assets/scss/base/" as b;
 
 
-.app-layout{
-    @include flex-row;
-    height: 100vh;
-    overflow: scroll;
-    overflow-y: auto;
+.app-layout {
+  @include flex-row;
+  height: 100vh;
+  overflow: hidden;
+}
 
+.app-content {
+  flex: 1;
+  overflow-y: auto; // ✅ ONLY outlet scrolls
+  height: 100%;
+  padding: 1rem; // optional
 }
