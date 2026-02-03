@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Dropdown from './Dropdown';
 import { useUI } from '../../../context/UIContext.jsx'
 import useAuthStore from '../../auth/AuthStore.js';
+import './navbar.scss'
 
 
 

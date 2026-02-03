@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast';
 import useAuthStore from "../AuthStore.js";
+import './login.scss'
 
 const Login = () => {
   const [email, setEmail] = useState('');

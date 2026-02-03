@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { FaAngleDown, FaAngleRight, FaBook, FaPlus } from 'react-icons/fa';
+import './dropdown.scss'
 
 const Dropdown = (props) => {
 

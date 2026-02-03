@@ -5,6 +5,7 @@ import { getData } from '../services/notes.service.js'
 import { useUI } from '../../../context/UIContext.jsx'
 import useKeyboard from '../../../context/useKeyboard.jsx'
 import useAuthStore from '../../auth/AuthStore.js'
+import './applayout.scss'
 
 
 const AppLayout = () => {
