@@ -27,7 +27,7 @@ const AuthLayout = () => {
         <div className="auth-layout__left">
           <h1 className="heading">{mode === "login" ? "Login" : "Register"}</h1>
           <form onSubmit={handleSubmit} className="form">
-            <Outlet context={{mode, email, setEmail, password, setPassword, username, setUsername, confirmPassword, setConfirmPassword}}/>
+            <Outlet context={{mode, setEmail, setPassword, setUsername, setConfirmPassword}}/>
           </form>
         </div>
       </div>

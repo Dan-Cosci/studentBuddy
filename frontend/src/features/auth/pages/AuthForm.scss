@@ -2,32 +2,54 @@
 
 
 .form-body{
-    width: 100%;
+    width: clamp(15rem ,27vw, 50rem);
     height: 100%;
-    
+    // background-color: red;
     @include flex-colum;
     align-items: center;
     justify-content: center;
 
 
-
-    input{
+    &__field{
         width: 100%;
-        padding: 0.5rem 1rem;
-        border: none;
-        border-bottom: 1px solid $clr-accent-hover;
-        color: white;
-        background: none;
-        margin: 1rem 0rem;
-        transition: all 0.3s ease-in-out;
-    }
-    
-    input:focus{
-        outline: none;
-        box-shadow: inset 0 -1px 0 $clr-accent-hover;
-    }
+        position: relative;
 
-    input::placeholder{
-        color: white;
+        label{
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transition: all 0.3s ease-in-out;
+            transform: translateY(-50%);
+        }
+
+    
+
+    
+
+        input{
+            width: 100%;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-bottom: 1px solid $clr-accent-hover;
+            color: white;
+            background: none;
+            margin: 1rem 0rem;
+            transition: all 0.3s ease-in-out;
+
+            &:focus + label,
+            &:not(:placeholder-shown) + label{
+                transform: translateY(-2.5rem) scale(.80);
+            }
+
+        }
+        
+        input:focus{
+            outline: none;
+            box-shadow: inset 0 -1px 0 $clr-accent-hover;
+        }
+    
+        input::placeholder{
+            color: white;
+        }
     }
 }

@@ -5,22 +5,27 @@ import './AuthForm.scss'
 const AuthForm = () => {
   const {mode,setEmail, setPassword, setUsername, setConfirmPassword} = useOutletContext();
 
-  console.log(mode);
-
-
   return (
     <div className='form-body'>
       {mode == 'register' && <>
-        {/* <label htmlFor="username">Username</label> */}
-        <input type="text" placeholder='Username' onChange={(e) => setUsername(e.target.value)} />
+        <div className="form-body__field">
+          <input placeholder=' ' type="text"  onChange={(e) => setUsername(e.target.value)} />
+          <label htmlFor="username">Username</label>
+        </div>
       </>}
-      {/* <label htmlFor="email">Email</label> */}
-      <input type="text" placeholder='Email'  onChange={(e) => setEmail(e.target.value)} />
-      {/* <label htmlFor="password">Password</label> */}
-      <input type="password" name="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)}/>
+      <div className="form-body__field">
+        <input placeholder=' ' type="text" onChange={(e) => setEmail(e.target.value)} />
+        <label htmlFor="email">Email</label>
+      </div>
+      <div className="form-body__field">
+        <input placeholder=' ' type="password" name="password"  onChange={(e) => setPassword(e.target.value)}/>
+        <label htmlFor="password">Password</label>
+      </div>
       {mode == 'register' && <>
-        {/* <label htmlFor="confirmPassword">Confirm Password</label> */}
-        <input type="password" name="confirmPassword" placeholder='Confirm Password' onChange={(e) => setConfirmPassword(e.target.value)} />
+        <div className="form-body__field">
+          <input placeholder=' ' type="password" name="confirmPassword" onChange={(e) => setConfirmPassword(e.target.value)} />
+          <label htmlFor="confirmPassword">Confirm Password</label>
+        </div>
       </>}
       <button type="submit">{mode == 'register' ? 'Register' : 'Login'}</button>
     </div>
