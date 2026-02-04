@@ -12,7 +12,7 @@ const ProtectedRoute = () => {
 
   if (loading) return <div>Loading...</div>;
 
-  if (!isAuth) return <Navigate to="/login" replace={true} />;
+  if (!isAuth) return <Navigate to="/auth?mode=login" replace={true} />;
 
   return <Outlet />;
 };

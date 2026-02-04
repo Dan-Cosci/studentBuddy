@@ -9,8 +9,8 @@ function MainRouter() {
     <>  
       <Routes >
         {LandingRoutes }
-        {AppRoutes }
         {AuthRoutes }
+        {AppRoutes }
       </Routes >
     </>
   )

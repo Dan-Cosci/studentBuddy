@@ -22,6 +22,7 @@ const useAuthStore = create(
             set({ error: response.data.message, isAuth: false, loading: false });
             return;
           }
+          console.log(response.data);
           set({ isAuth: true, loading: false, user: response.data.user });
         } catch (err) {
           set({ error: err.message || 'Login failed', loading: false });
