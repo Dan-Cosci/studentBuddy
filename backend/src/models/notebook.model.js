@@ -7,7 +7,6 @@ const notebookSchema = new mongoose.Schema({
     trim: true,
     minlength: 1,
   },
-  
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',

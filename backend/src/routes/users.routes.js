@@ -3,9 +3,9 @@ import { Router } from "express";
 import authorize from "../middleware/auth.middleware.js";
 import { GetUsers, GetUserDetails } from "../controllers/user.controller.js";
 
-const userRoutes = Router();
+const userRouter = Router();
 
-userRoutes.get('/', authorize ,GetUsers);
-userRoutes.get('/:id', authorize ,GetUserDetails);
+userRouter.get('/', authorize ,GetUsers);
+userRouter.get('/:id', authorize ,GetUserDetails);
 
-export default userRoutes;  
+export default userRouter;  

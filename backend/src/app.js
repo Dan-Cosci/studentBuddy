@@ -8,9 +8,7 @@ import { config } from './config/config.js';
 import connectDB from './config/database.js';
 
 // routes
-import authRoutes from './routes/auth.routes.js';
-import noteRoutes from './routes/notes.routes.js';
-import userRoutes from './routes/users.routes.js';
+import router from './routes/router.js';
 
 // middlewares
 import { arcjetMiddleware } from './middleware/arcjet.middleware.js';
@@ -36,9 +34,7 @@ app.use(morgan("dev"))
 app.use(arcjetMiddleware)
 
 //routes  
-app.use('/api/v1/auth', authRoutes);
-app.use('/api/v1/notes', noteRoutes);
-app.use('/api/v1/users', userRoutes);
+app.use('/api/v1', router)
 
 // error handling middleware
 app.use(errorHandler);
