@@ -24,7 +24,7 @@ const LandingNav = () => {
       <div className="landing-nav__link-ct">
         {!isAuthpage ? (
           <ul className='landing-nav__ul'>
-            <li className='landing-nav__li'><Link className='landing-nav__link' to="/login">Try Our App!</Link></li>
+            <li className='landing-nav__li'><Link className='landing-nav__link' to="/auth?mode=login">Try Our App!</Link></li>
           </ul>
         ):(
           <ul className='landing-nav__ul'>
