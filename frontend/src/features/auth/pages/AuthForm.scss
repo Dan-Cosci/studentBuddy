@@ -55,6 +55,19 @@
         input::placeholder{
             color: white;
         }
+
+    }
+
+    &__additional{
+        @include flex-row;
+        gap: .5rem;
+        width: 100%;
+        font-size: 0.8rem;
+        margin: -0.6rem 0 1rem 0;
+        input{
+            height: 2rem;
+        }
+
     }
 
     button{
@@ -86,8 +99,17 @@
             );
         }
         &:hover:before{
-            transform: translateY(-40px);
-            
+            transform: translateY(-40px);    
+        }
+        &:active{
+            opacity: 0.8;
+        }
+    }
+    .link{
+        margin-top: 1rem;
+        font-size: .9rem;
+        &:hover{
+            color:$clr-accent-hover;
         }
     }
 }
