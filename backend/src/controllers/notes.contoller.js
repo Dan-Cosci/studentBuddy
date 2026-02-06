@@ -154,3 +154,31 @@ export const summarizeNote = async (req, res) => {
     message: "Summarization not yet implemented"
   });
 };
+
+
+export const bulkAddNotes = async (req, res) => {
+  try {
+    const notes = req.body;
+    if(!Array.isArray(notes)){
+      return res.status(400).json({
+        success: false,
+        message: "Invalid request body"
+      });
+    }
+
+    const addedNotes = await Note.insertMany(notes);
+    res.status(201).json({
+      success: true,
+      message: "Notes added successfully",
+      data: addedNotes
+    });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
+      stackTrace: error.stack
+    });
+  }
+}

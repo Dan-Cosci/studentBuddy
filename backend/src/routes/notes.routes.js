@@ -6,7 +6,8 @@ import {
   GetAllUserNotes, 
   GetNoteDetails, 
   summarizeNote, 
-  updateNote
+  updateNote,
+  bulkAddNotes
 } from "../controllers/notes.contoller.js";
 import authorize from "../middleware/auth.middleware.js";
 
@@ -17,6 +18,10 @@ notesRouter.get("/", GetAllNotes);
 notesRouter.get("/ai", summarizeNote);
 
 notesRouter.get("/:userId", authorize ,GetAllUserNotes);
+
+// dev
+notesRouter.post("/bulk", bulkAddNotes);
+
 notesRouter.post("/:userId", authorize, AddNote);
 notesRouter.get("/:userId/:noteId", authorize, GetNoteDetails);
 notesRouter.put("/:noteId", authorize, updateNote);

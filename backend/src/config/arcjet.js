@@ -8,7 +8,7 @@ export const aj = arcjet({
 
   key: config.arcjet.key,
   env: config.arcjet.env,
-  characteristics: ["ip.src", "user_agent", "tls.client.fingerprint"],
+  characteristics: ["ip.src", "tls.client.fingerprint"],
 
   rules: [
     // Shield protects your app from common attacks e.g. SQL injection
