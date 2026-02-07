@@ -1,29 +1,34 @@
 import React, { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 import Navbar from '../components/Navbar.jsx'
-import { getData } from '../services/notes.service.js'
 import { useUI } from '../../../context/UIContext.jsx'
 import useKeyboard from '../../../context/useKeyboard.jsx'
 import useAuthStore from '../../auth/AuthStore.js'
+import useAppStore from '../useAppStore.js'
 import './applayout.scss'
 
 
 const AppLayout = () => {
-  const { user } = useAuthStore();
+  const user = useAuthStore((state) => state.user);
+  const initApp = useAppStore((state) => state.initApp);
+
   console.log(user);
 
   useEffect(() => {
+    if (!user?._id || !initApp) return;
+
+
     const fetchData = async () => {
       try {
-        const data = await getData(user?._id);
-        console.log(data);
+        const response = await initApp(user?._id);
+        console.log(response);
       } catch (error) {
         console.log(error);
       }
     };
 
     fetchData();
-  },[]);
+  },[user?._id, initApp]);
   const { toggleSidebar } = useUI();
 
   useKeyboard(

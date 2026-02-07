@@ -2,7 +2,6 @@ import instance from "../../../config/api.js";
 
 const api = instance;
 
-
 export const getData = async (id) => {
-  return await api.get(`/notebook/${id}`);
+  return await api.get(`/notebooks/${id}`);
 }
