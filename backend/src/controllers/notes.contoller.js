@@ -170,7 +170,7 @@ export const bulkAddNotes = async (req, res) => {
     res.status(201).json({
       success: true,
       message: "Notes added successfully",
-      data: addedNotes
+      notes: addedNotes
     });
 
   } catch (error) {

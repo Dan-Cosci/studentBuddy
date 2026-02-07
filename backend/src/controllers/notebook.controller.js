@@ -58,7 +58,7 @@ export const bulkAddNotebooks = async (req, res) => {
     res.status(201).json({
       success: true,
       message: "Notebooks added successfully",
-      data: addedNotebooks
+      notebooks: addedNotebooks
     });
     
 
