@@ -1,5 +1,4 @@
 import Notebook from "../models/notebook.model.js";
-import { config } from "../config/config.js";
 
 export const getAllNotebooks = async (req, res) => {
   try {
@@ -171,7 +170,7 @@ export const deleteNotebook = async (req, res) => {
       message: "Notebook deleted successfully",
       notebook: deletedNotebook
     });
-    
+
   } catch (error) {
     console.error(error);
     res.status(500).json({
