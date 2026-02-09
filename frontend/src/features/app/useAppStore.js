@@ -8,6 +8,21 @@ const useAppStore = create(
     (set, get) => ({
       notes: [],
       notebooks: [],
+      active: null,
+      notesRender:[],
+
+      setActive: (name) => {
+        const id = get().notebooks.find((nb) => nb.title === name)._id;
+        set({ active: id })
+      },
+      setNotesRender: () =>{
+        const id = get().active;
+        set({notesRender: get().notes.filter((note) => {
+          return note.notebookId === id;
+        })
+      })
+        console.log(get().notesRender)
+      },
 
       // notes
       getAllUserNotes: async (id) => {
@@ -64,6 +79,7 @@ const useAppStore = create(
 
         console.log(get().notes);
         console.log(get().notebooks);
+        set({ active: get().notebooks[0]._id });
 
         return 'note initialized';
       },

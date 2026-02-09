@@ -5,6 +5,7 @@ import { useUI } from '../../../context/UIContext.jsx'
 import useKeyboard from '../../../context/useKeyboard.jsx'
 import useAuthStore from '../../auth/AuthStore.js'
 import useAppStore from '../useAppStore.js'
+import Loading from '../../Loading.jsx'
 import './applayout.scss'
 
 
@@ -23,7 +24,10 @@ const AppLayout = () => {
       try {
         const response = await initApp(user?._id);
         console.log(response);
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        },2000);
+        // setLoading(false); // This line was redundant as setLoading(false) is already inside the setTimeout
       } catch (error) {
         console.log(error);
       }
@@ -46,9 +50,7 @@ const AppLayout = () => {
       <section className="app-content">
         <Outlet />
       </section>
-    </main> : <>
-      <div className="loading">loading</div>
-    </>}
+    </main> : <Loading />}
 
     </>
   )

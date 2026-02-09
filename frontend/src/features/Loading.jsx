@@ -3,7 +3,17 @@ import './Loading.scss'
 
 const Loading = () => {
   return (
-    <div>Loading</div>
+    <>
+      <div className="loader">
+        <div className="loader__container">
+          <div className="loader__circle"></div>
+          <div className="loader__circle"></div>
+          <div className="loader__circle"></div>
+          <div className="loader__circle"></div>
+          <div className="loader__circle"></div>
+        </div>
+      </div>
+    </>
   )
 }
 

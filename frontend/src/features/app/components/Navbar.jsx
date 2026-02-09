@@ -10,7 +10,7 @@ import './navbar.scss'
 
 
 const Navbar = () => {
-  const { notebooks } = useAppStore();
+  const { notebooks, active } = useAppStore();
   const { user } = useAuthStore();
   
   const pages = {

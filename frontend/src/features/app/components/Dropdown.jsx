@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { FaAngleDown, FaAngleRight, FaBook, FaPlus } from 'react-icons/fa';
+import useAppStore from '../useAppStore';
 import './dropdown.scss'
 
 const Dropdown = (props) => {
-
+  const { setActive, setNotesRender } = useAppStore();
   const {sectionName, items} = props;
   const [open, setOpen] = useState(true);
   const [visible, setVisible] = useState(false);
@@ -13,6 +14,11 @@ const Dropdown = (props) => {
 
   }
 
+  const handlePage = (e) =>{
+    e.stopPropagation();
+    setActive(e.target.textContent);
+    setNotesRender();
+  }
 
   return (
     <>
@@ -38,7 +44,7 @@ const Dropdown = (props) => {
 
        <ul className={`dropDown__ul ${open ? 'dropDown__ul--open' : ''}`}>  
         {items.map((item) => (
-          <li key={item} className="dropDown__li">
+          <li key={item} onClick={handlePage} className="dropDown__li">
             <FaBook className="dropDown__li__icon" />
             <span>{item}</span>
           </li>
