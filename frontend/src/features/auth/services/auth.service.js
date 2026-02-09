@@ -12,6 +12,7 @@ export const register = async (data) => {
 
 export const logout = async () => {
   localStorage.removeItem("auth-storage");
+  localStorage.removeItem("app-storage");
   return await api.post("/auth/logout");
 };
 

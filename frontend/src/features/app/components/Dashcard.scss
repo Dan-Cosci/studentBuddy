@@ -1,0 +1,21 @@
+@use '../../../assets/scss/abstract/' as *;
+
+.dashcard{
+    background-color: $clr-bg-light;
+    width: 100%;
+    padding: 1rem 1rem;
+
+    border-radius: 1rem;
+
+    transition: all 0.2s ease-in-out;
+    &:hover,
+    &:focus{
+        cursor: pointer;
+        // border: solid 1px green;
+        transform: scale(1.05);
+    }
+
+    &:active{
+        opacity: .8;
+    }
+}

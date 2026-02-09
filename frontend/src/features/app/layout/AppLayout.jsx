@@ -24,9 +24,7 @@ const AppLayout = () => {
       try {
         const response = await initApp(user?._id);
         console.log(response);
-        setTimeout(() => {
-          setLoading(false);
-        },2000);
+        setLoading(false);
         // setLoading(false); // This line was redundant as setLoading(false) is already inside the setTimeout
       } catch (error) {
         console.log(error);

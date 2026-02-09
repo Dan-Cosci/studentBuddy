@@ -10,7 +10,7 @@ import './navbar.scss'
 
 
 const Navbar = () => {
-  const { notebooks, active } = useAppStore();
+  const { notebooks } = useAppStore();
   const { user } = useAuthStore();
   
   const pages = {
@@ -37,7 +37,7 @@ const Navbar = () => {
             <FaSearch className="side-nav__li__icon" />
             <p>Search</p>
             </li>
-          <li className="side-nav__li">
+          <li className="side-nav__li" onClick={() => navigate('/app')}>
             <FaHome className="side-nav__li__icon" />
             <p>Home</p>
             </li>

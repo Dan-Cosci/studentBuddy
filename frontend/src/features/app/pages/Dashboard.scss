@@ -1,1 +1,13 @@
-@use '../../../assets/scss/abstract/' as *
+@use '../../../assets/scss/abstract/' as *;
+
+
+.card-ct{
+    width: 100%;
+    min-height: 100vh;
+    @include flex-row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+
+
+}

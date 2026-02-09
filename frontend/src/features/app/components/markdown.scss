@@ -1,203 +1,161 @@
 @use "../../../assets/scss/abstract/" as *;
-@use "../../../assets/scss/base/" as b;
+
+/* ===================================
+   MDX EDITOR RESET (SCOPED)
+   =================================== */
 
 .markdown {
-  min-height: 100vh;
+  /* Base box reset */
+  box-sizing: border-box;
   width: 100%;
+  min-height: 100vh;
   padding: 3rem;
-  caret-color: $clr-accent;
-  --mdxeditor-text-color: $clr-text-primary !important;
-  transition: all 0.2s ease-in-out;
 
-  *{
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+
+  caret-color: $clr-accent;
+  color: $clr-text-primary;
+
+  --mdxeditor-text-color: #{$clr-text-primary};
+
+  /* Prevent global reset bleed */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
     color: $clr-text-primary;
-  
   }
 
-  // ---------------------------
-  // Text elements
-  // ---------------------------
-  // p,
-  // span,
-  // li,
-  // h1,
-  // h2,
-  // h3,
-  // blockquote,
-  // strong,
-  // em {
-  //   color: $clr-text-primary;
-  //   line-height: 1.6;
-  //   margin-bottom: 1rem;
-  //   font-family: 'Inter', sans-serif;
-  // }
+  /* ===================================
+     TEXT ELEMENTS
+     =================================== */
 
-  // strong {
-  //   font-weight: 600;
-  // }
+  p {
+    margin: 0 0 1rem 0;
+  }
 
-  // em {
-  //   font-style: italic;
-  // }
+  strong {
+    font-weight: 600;
+  }
 
-  // // ---------------------------
-  // // Headings
-  // // ---------------------------
-  // h1 {
-  //   font-size: 2.25rem;
-  //   font-weight: 700;
-  //   margin-top: 2rem;
-  //   margin-bottom: 1rem;
-  // }
-  // h2 {
-  //   font-size: 1.875rem;
-  //   font-weight: 600;
-  //   margin-top: 1.5rem;
-  //   margin-bottom: 1rem;
-  // }
-  // h3 {
-  //   font-size: 1.5rem;
-  //   font-weight: 500;
-  //   margin-top: 1.25rem;
-  //   margin-bottom: 0.75rem;
-  // }
+  em {
+    font-style: italic;
+  }
 
-  // // Reduce spacing after heading for next paragraph
-  // h1 + p,
-  // h2 + p,
-  // h3 + p {
-  //   margin-top: -0.5rem;
-  // }
+  /* ===================================
+     HEADINGS
+     =================================== */
 
-  // // ---------------------------
-  // // Links
-  // // ---------------------------
-  // a {
-  //   color: $clr-accent;
-  //   text-decoration: underline;
-  //   transition: color 0.2s;
-  //   &:hover {
-  //     color: $clr-accent;
-  //   }
-  // }
+  h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin: 2rem 0 1rem;
+  }
 
-  // // ---------------------------
-  // // Lists
-  // // ---------------------------
-  // ul,
-  // ol {
-  //   list-style: none;
-  //   padding-left: 1rem;
-  //   margin-bottom: 1rem;
+  h2 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    margin: 1.75rem 0 1rem;
+  }
 
-  //   li {
-  //     position: relative;
-  //     padding-left: 2rem;
-  //     margin-bottom: 0.75rem;
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 1.5rem 0 0.75rem;
+  }
 
-  //     // -------------------
-  //     // Regular bullets
-  //     // -------------------
-  //     &.bullet-item::before {
-  //       content: '•';
-  //       position: absolute;
-  //       left: 0;
-  //       top: 0.1rem;
-  //       font-size: 1rem;
-  //       color: $clr-accent;
-  //     }
+  h1 + p,
+  h2 + p,
+  h3 + p {
+    margin-top: 0;
+  }
 
-  //     // -------------------
-  //     // Checklist items
-  //     // -------------------
-  //     &.checkbox-item {
-  //       padding-left: 2.2rem;
+  /* ===================================
+     LISTS (FIX INDENT ISSUES)
+     =================================== */
 
-  //       input[type="checkbox"] {
-  //         position: absolute;
-  //         left: 0;
-  //         top: 0.15rem;
-  //         transform: scale(1.2);
-  //         accent-color: $clr-accent;
-  //         cursor: pointer;
-  //       }
+  ul,
+  ol {
+    margin: 0 0 1rem 1.25rem;
+    padding-left: 1.25rem;
+  }
 
-  //       input[type="checkbox"] + span {
-  //         margin-left: 0.5rem;
-  //       }
-  //     }
-  //   }
-  // }
+  li {
+    margin-bottom: 0.5rem;
+  }
 
-  // // ---------------------------
-  // // Code
-  // // ---------------------------
-  // pre {
-  //   background-color: $clr-border;
-  //   padding: 1rem;
-  //   border-radius: 0.5rem;
-  //   overflow-x: auto;
-  //   margin-bottom: 1rem;
-  // }
+  li ::before{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  // code {
-  //   font-family: 'Fira Code', monospace;
-  //   background-color: $clr-secondary;
-  //   padding: 0.2rem 0.4rem;
-  //   border-radius: 0.25rem;
-  //   font-size: 0.95rem;
-  // }
+  }
 
-  // // ---------------------------
-  // // Blockquotes
-  // // ---------------------------
-  // blockquote {
-  //   border-left: 4px solid $clr-accent;
-  //   padding-left: 1rem;
-  //   color: $clr-text-muted;
-  //   font-style: italic;
-  //   margin: 1rem 0;
-  // }
+  /* ===================================
+     BLOCKQUOTES
+     =================================== */
 
-  // // ---------------------------
-  // // Horizontal rules
-  // // ---------------------------
-  // hr {
-  //   border: none;
-  //   border-top: 1px solid ;
-  //   margin: 2rem 0;
-  // }
+  blockquote {
+    margin: 1rem 0;
+    padding-left: 1rem;
+    border-left: 4px solid $clr-accent;
+    color: $clr-text-muted;
+    font-style: italic;
+  }
 
-  // // ---------------------------
-  // // Tables
-  // // ---------------------------
-  // table {
-  //   width: 100%;
-  //   border-collapse: collapse;
-  //   margin-bottom: 1.5rem;
+  /* ===================================
+     CODE
+     =================================== */
 
-  //   th,
-  //   td {
-  //     border: 1px solid ;
-  //     padding: 0.75rem 1rem;
-  //     text-align: left;
-  //   }
+  pre {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: $clr-border;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+  }
 
-  //   th {
-  //     background-color: $clr-border;
-  //   }
+  code {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.95rem;
+    background-color: $clr-secondary;
+    padding: 0.15rem 0.35rem;
+    border-radius: 0.25rem;
+  }
 
-  //   tr:nth-child(even) {
-  //     background-color: $clr-border;
-  //   }
-  // }
+  /* ===================================
+     HR
+     =================================== */
 
-  // // ---------------------------
-  // // Images
-  // // ---------------------------
-  // img {
-  //   max-width: 100%;
-  //   border-radius: 0.5rem;
-  //   margin: 1rem 0;
-  // }
+  hr {
+    border: none;
+    border-top: 1px solid $clr-border;
+    margin: 2rem 0;
+  }
+
+  /* ===================================
+     LINKS
+     =================================== */
+
+  a {
+    color: $clr-accent;
+    text-decoration: underline;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
+  /* ===================================
+     IMAGES
+     =================================== */
+
+  img {
+    max-width: 100%;
+    margin: 1rem 0;
+    border-radius: 0.5rem;
+    display: block;
+  }
 }
