@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import Navbar from '../components/Navbar.jsx'
 import { useUI } from '../../../context/UIContext.jsx'
@@ -11,6 +11,7 @@ import './applayout.scss'
 const AppLayout = () => {
   const user = useAuthStore((state) => state.user);
   const initApp = useAppStore((state) => state.initApp);
+  const [loading, setLoading] = useState(true);
 
   console.log(user);
 
@@ -22,13 +23,14 @@ const AppLayout = () => {
       try {
         const response = await initApp(user?._id);
         console.log(response);
+        setLoading(false);
       } catch (error) {
         console.log(error);
       }
     };
 
     fetchData();
-  },[user?._id, initApp]);
+  },[user?._id]);
   const { toggleSidebar } = useUI();
 
   useKeyboard(
@@ -39,12 +41,14 @@ const AppLayout = () => {
 
   return (
     <>
-     <main className="app-layout">
+     {!loading ? <main className="app-layout">
       <Navbar />
       <section className="app-content">
         <Outlet />
       </section>
-    </main>
+    </main> : <>
+      <div className="loading">loading</div>
+    </>}
 
     </>
   )

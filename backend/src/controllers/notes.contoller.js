@@ -7,7 +7,7 @@ export const GetAllNotes = async (req, res, next) => {
     res.status(200).json({
       success: true,
       message: "Notes loaded successfully",
-      NodeIterator: notes
+      notes: notes
     });
   } catch (error) {
     next(error);
@@ -26,7 +26,7 @@ export const GetAllUserNotes = async (req, res, next) => {
     res.status(200).json({
       success: true,
       message: "User notes loaded successfully",
-      note: notes
+      notes: notes
     });
   } catch (error) {
     next(error);
@@ -170,7 +170,7 @@ export const bulkAddNotes = async (req, res) => {
     res.status(201).json({
       success: true,
       message: "Notes added successfully",
-      note: addedNotes
+      notes: addedNotes
     });
 
   } catch (error) {

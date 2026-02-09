@@ -6,7 +6,7 @@ export const getAllNotebooks = async (req, res) => {
     res.status(200).json({
       success: true,
       message: "Notebooks loaded successfully",
-      notebook: nb
+      notebooks: nb
     });
 
   } catch (error) {
@@ -26,7 +26,7 @@ export const getAllUserNotebooks = async (req, res) => {
     res.status(200).json({
       success: true,
       message: "User notebooks loaded successfully",
-      notebook: nb
+      notebooks: nb
     });
 
   } catch (error) {

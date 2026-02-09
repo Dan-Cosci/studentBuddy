@@ -4,14 +4,18 @@ import { useNavigate } from 'react-router-dom';
 import Dropdown from './Dropdown';
 import { useUI } from '../../../context/UIContext.jsx'
 import useAuthStore from '../../auth/AuthStore.js';
+import useAppStore from '../useAppStore.js';
 import './navbar.scss'
 
 
 
 const Navbar = () => {
+  const { notebooks } = useAppStore();
+  const { user } = useAuthStore();
+  
   const pages = {
-    sectionName:"Dan",
-    items: ['Me', 'Diary', 'School']
+    sectionName: user?.username || "Guest",
+    items: notebooks.map((notebook) => notebook.title)
   };
   const navigate = useNavigate();
   const { logout } = useAuthStore();

@@ -54,7 +54,7 @@ export const ErrorFactory = {
    * @param {string} code - Custom error code
    * @returns {AppError} Bad request error
    */
-  badRequest: (message = 'Bad request', code = null) => 
+  badRequest: (message = 'Bad request', code = null) =>  
     new AppError(message, 400, true, code),
   
   /**

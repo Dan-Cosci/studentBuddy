@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import './404.scss'
+import './Page404.scss'
 
 const Page404 = () => {
   return (
