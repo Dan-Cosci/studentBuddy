@@ -14,7 +14,8 @@ const Markdown = (props) => {
       headingsPlugin(),
       listsPlugin(),
       quotePlugin(),
-      markdownShortcutPlugin()]}/>
+      markdownShortcutPlugin()
+    ]}/>
   )
 }
 

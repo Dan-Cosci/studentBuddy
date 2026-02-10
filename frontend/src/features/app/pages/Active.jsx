@@ -1,19 +1,33 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import Markdown from '../components/Markdown';
-import useAppStore from '../useAppStore';
+import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import Markdown from '../components/Markdown'
+import useAppStore from '../useAppStore'
 import './active.scss'
-
+import Loading from '../../Loading'
 
 const Active = () => {
-  const {id} = useParams();
-  const { notes } = useAppStore();
+  const { id } = useParams()
+  const notes = useAppStore(state => state.notes)
+  const [activeNote, setActiveNote] = useState(null)
 
-  const activeNote = notes.find(note => note._id === id);
+  useEffect(() => {
+    if (!notes.length || !id) return
+
+    const note = notes.find(note => note._id === id)
+    setActiveNote(note || null)
+  }, [id, notes])
+
+  const handleSave = () => {
+    console.log('save note')
+  }
 
   return (
-    <div className='active'>
-      <Markdown content={activeNote.content} />
+    <div className="active" onBlur={handleSave}>
+      {activeNote ? (
+        <Markdown content={activeNote.content} />
+      ) : (
+        <Loading />
+      )}
     </div>
   )
 }

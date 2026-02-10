@@ -3,11 +3,11 @@ import useAppStore from '../useAppStore'
 import './Dashboard.scss'
 import Dashcard from '../components/Dashcard';
 import { useNavigate } from 'react-router-dom';
+import AddNote from '../components/AddNote';
 
 const Dashboard = () => {
   const { notesRender } = useAppStore();
   const navigate = useNavigate();
-
 
   const handleClick = (e) => {
     console.log(e);
@@ -28,6 +28,7 @@ const Dashboard = () => {
             onClick={()=>handleClick(note._id)}
           />
         ))}
+        <AddNote />
       </div>
     </>
   )

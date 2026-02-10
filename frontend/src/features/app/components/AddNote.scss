@@ -1,0 +1,21 @@
+@use '../../../assets/scss/abstract/' as *;
+
+
+.addnote-card{
+    @include flex-colum;
+    align-items: center;
+    justify-content: center;
+    background-color:$clr-main ;
+    padding:1rem 1rem;
+    border-radius:1rem;
+
+
+    &:hover{
+        background-color:$clr-border ;
+
+    }
+}
+
+.addnote-icon{
+    font-size: 4rem;
+}
